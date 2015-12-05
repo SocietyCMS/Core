@@ -17,7 +17,7 @@
     }
   },
   "require": {
-    "floatingpoint/stylist": "dev-master",
+    "floatingpoint/stylist": "~0.2",
     "laracasts/flash": "~1.3",
     "laravelcollective/html": "5.1.*",
     "maatwebsite/laravel-sidebar": "~2.0",
