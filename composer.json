@@ -17,6 +17,7 @@
     }
   },
   "require": {
+    "societycms/installer": "dev-master",
     "floatingpoint/stylist": "~0.2",
     "laracasts/flash": "~1.3",
     "laravelcollective/html": "5.1.*",
