@@ -1,11 +1,11 @@
-<?php namespace Modules\Core\Traits\Media;
+<?php
 
-Trait baseMediaConversions
+namespace Modules\Core\Traits\Media;
+
+trait baseMediaConversions
 {
-
     public function registerMediaConversions()
     {
-
         $this->addMediaConversion('square100')
             ->setManipulations(['w' => 100, 'h' => 100, 'fit' => 'crop'])
             ->performOnCollections('images');
@@ -14,7 +14,6 @@ Trait baseMediaConversions
             ->setManipulations(['w' => 200, 'h' => 100, 'fit' => 'crop'])
             ->performOnCollections('images');
 
-
         $this->addMediaConversion('wide160')
             ->setManipulations(['w' => 160, 'h' => 90, 'fit' => 'crop'])
             ->performOnCollections('images');
@@ -22,7 +21,6 @@ Trait baseMediaConversions
         $this->addMediaConversion('wide320')
             ->setManipulations(['w' => 320, 'h' => 180, 'fit' => 'crop'])
             ->performOnCollections('images');
-
 
         $this->addMediaConversion('original100')
             ->setManipulations(['w' => 100, 'h' => 100, 'fit' => 'max'])
@@ -39,7 +37,6 @@ Trait baseMediaConversions
         $this->addMediaConversion('original400')
             ->setManipulations(['w' => 400, 'h' => 400, 'fit' => 'max'])
             ->performOnCollections('images');
-
 
         $this->addMediaConversion('cover900')
             ->setManipulations(['w' => 900, 'h' => 200, 'fit' => 'crop', 'fm' => 'png'])

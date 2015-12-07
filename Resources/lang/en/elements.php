@@ -2,43 +2,43 @@
 
 return [
     'button' => [
-        'edit'  => 'Edit',
-        'cancel' => 'Cancel',
-        'create' => 'Create',
-        'update' => 'Update',
-        'delete' => 'Delete',
-        'reset' => 'Reset',
+        'edit'            => 'Edit',
+        'cancel'          => 'Cancel',
+        'create'          => 'Create',
+        'update'          => 'Update',
+        'delete'          => 'Delete',
+        'reset'           => 'Reset',
         'update and back' => 'Update and go back',
     ],
     'state' => [
-        'enabled' => 'Enabled',
-        'disabled' => 'Disabled',
+        'enabled'   => 'Enabled',
+        'disabled'  => 'Disabled',
         'added'     => 'Added',
-        'changed' => 'Changed',
-        'removed' => 'Removed',
+        'changed'   => 'Changed',
+        'removed'   => 'Removed',
         'published' => 'Published',
-        'draft' => 'Draft'
+        'draft'     => 'Draft',
     ],
     'change state' => [
-        'enable' => 'Enable',
+        'enable'  => 'Enable',
         'disable' => 'Disable',
         'publish' => 'Publish',
     ],
     'action' => [
-        'add resource' => 'Add :name',
+        'add resource'    => 'Add :name',
         'create resource' => 'Create :name',
-        'edit resource' => 'Edit :name',
+        'edit resource'   => 'Edit :name',
         'delete resource' => 'Delete :name',
     ],
     'info' => [
-        'title' => 'Info',
+        'title'      => 'Info',
         'created at' => 'Created at :time',
         'updated at' => 'Updated at :time',
     ],
     'progress' => [
-        'uploading resource' => 'Uploading :name ...'
+        'uploading resource' => 'Uploading :name ...',
     ],
     'separator' => [
-        'or' => 'Or'
-    ]
+        'or' => 'Or',
+    ],
 ];

@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Providers;
+<?php
+
+namespace Modules\Core\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
@@ -15,7 +17,8 @@ abstract class RoutingServiceProvider extends ServiceProvider
     /**
      * Define your route model bindings, pattern filters, etc.
      *
-     * @param  \Illuminate\Routing\Router $router
+     * @param \Illuminate\Routing\Router $router
+     *
      * @return void
      */
     public function boot(Router $router)
@@ -26,16 +29,15 @@ abstract class RoutingServiceProvider extends ServiceProvider
     /**
      * Define the routes for the application.
      *
-     * @param  \Illuminate\Routing\Router $router
+     * @param \Illuminate\Routing\Router $router
+     *
      * @return void
      */
     public function map(Router $router)
     {
         $api = app('Dingo\Api\Routing\Router');
 
-
         $this->loadApiRoutes($api, $router);
-
 
         $router->group(['namespace' => $this->namespace], function (Router $router) {
             $this->loadBackendRoutes($router);
@@ -56,7 +58,6 @@ abstract class RoutingServiceProvider extends ServiceProvider
 
         if ($apiRoutes && file_exists($apiRoutes)) {
             require $apiRoutes;
-
         }
     }
 
@@ -74,9 +75,9 @@ abstract class RoutingServiceProvider extends ServiceProvider
 
         if ($backend && file_exists($backend)) {
             $router->group([
-                'namespace' => 'backend',
-                'prefix' => config('society.core.core.admin-prefix'),
-                'middleware' => config('society.core.core.middleware.backend', [])
+                'namespace'  => 'backend',
+                'prefix'     => config('society.core.core.admin-prefix'),
+                'middleware' => config('society.core.core.middleware.backend', []),
             ], function (Router $router) use ($backend) {
                 require $backend;
             });

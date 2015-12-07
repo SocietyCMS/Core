@@ -13,7 +13,7 @@ return [
     | Location where your themes are located
     |--------------------------------------------------------------------------
     */
-    'themes_path' => base_path() . '/Themes',
+    'themes_path' => base_path().'/Themes',
 
     /*
     |--------------------------------------------------------------------------
@@ -39,13 +39,12 @@ return [
         ],
         'api' => [
             'backend' => [
-                'api.auth'
+                'api.auth',
             ],
             'frontend' => [
             ],
         ],
     ],
-
 
     /*
     |--------------------------------------------------------------------------
@@ -58,7 +57,7 @@ return [
         'user',
         'menu',
         'setting',
-        'modules'
+        'modules',
     ],
 
 ];

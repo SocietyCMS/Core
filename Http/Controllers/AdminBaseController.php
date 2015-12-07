@@ -1,14 +1,11 @@
-<?php namespace Modules\Core\Http\Controllers;
+<?php
 
-use FloatingPoint\Stylist\Facades\ThemeFacade as Theme;
+namespace Modules\Core\Http\Controllers;
+
 use Illuminate\Routing\Controller;
-use Modules\Core\Foundation\Asset\Manager\AssetManager;
-use Modules\Core\Foundation\Asset\Pipeline\AssetPipeline;
-use Pingpong\Modules\Facades\Module;
 
 /**
- * Class AdminBaseController
- * @package Modules\Core\Http\Controllers
+ * Class AdminBaseController.
  */
 class AdminBaseController extends Controller
 {
@@ -17,6 +14,5 @@ class AdminBaseController extends Controller
      */
     public function __construct()
     {
-
     }
 }

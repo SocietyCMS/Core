@@ -1,8 +1,9 @@
-<?php namespace Modules\Core\Permissions;
+<?php
+
+namespace Modules\Core\Permissions;
 
 class PermissionManager
 {
-
     /**
      * @var Module
      */
@@ -16,8 +17,10 @@ class PermissionManager
     }
 
     /**
-     * Return a correctly type casted permissions array
+     * Return a correctly type casted permissions array.
+     *
      * @param $permissions
+     *
      * @return array
      */
     public function clean($permissions)
@@ -30,7 +33,6 @@ class PermissionManager
         $allPermission = $this->all();
 
         foreach ($permissions as $permissionGroupName => $checkedPermission) {
-
             foreach (array_get($allPermission, $permissionGroupName) as $permissionName) {
                 $cleanedPermissions[$permissionName] = $this->getState($checkedPermission);
             }
@@ -40,14 +42,15 @@ class PermissionManager
     }
 
     /**
-     * Get the permissions from all the enabled modules
+     * Get the permissions from all the enabled modules.
+     *
      * @return array
      */
     public function all()
     {
         $permissions = [];
         foreach ($this->module->enabled() as $enabledModule) {
-            $configuration = config(strtolower('society.' . $enabledModule->getName()) . '.permissions');
+            $configuration = config(strtolower('society.'.$enabledModule->getName()).'.permissions');
             if ($configuration) {
                 $permissions[$enabledModule->getName()] = $configuration;
             }
@@ -58,6 +61,7 @@ class PermissionManager
 
     /**
      * @param $checkedPermission
+     *
      * @return bool
      */
     protected function getState($checkedPermission)
@@ -67,9 +71,9 @@ class PermissionManager
         }
 
         if ($checkedPermission == 'false') {
-            return null;
+            return;
         }
 
-        return null;
+        return;
     }
 }

@@ -1,20 +1,20 @@
-<?php namespace Modules\Core\Repositories\Eloquent;
+<?php
+
+namespace Modules\Core\Repositories\Eloquent;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
- * Class EloquentBaseRepository
- *
- * @package Modules\Core\Repositories\Eloquent
+ * Class EloquentBaseRepository.
  */
 abstract class EloquentBaseRepository extends BaseRepository
 {
-
     /**
-     * Find data by multiple fields or create if not exists
+     * Find data by multiple fields or create if not exists.
      *
      * @param $id
      * @param array $columns
+     *
      * @return mixed
      */
     public function firstOrCreate(array $where)
@@ -23,7 +23,7 @@ abstract class EloquentBaseRepository extends BaseRepository
         $this->applyScope();
         $model = $this->model->firstOrCreate($where);
         $this->resetModel();
+
         return $this->parserResult($model);
     }
-
 }
