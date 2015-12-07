@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Providers;
+<?php
+
+namespace Modules\Core\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Schema;
@@ -9,7 +11,6 @@ use Pingpong\Modules\Module;
 
 class CoreServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -29,8 +30,8 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected $middleware = [
         'Core' => [
-            'permissions' => 'PermissionMiddleware',
-            'auth.backend' => 'BackendMiddleware',
+            'permissions'      => 'PermissionMiddleware',
+            'auth.backend'     => 'BackendMiddleware',
             'societyInstalled' => 'SocietyInstalledMiddleware',
         ],
     ];
@@ -46,7 +47,6 @@ class CoreServiceProvider extends ServiceProvider
 
         $this->registerMiddleware($this->app['router']);
         $this->registerModuleResourceNamespaces();
-
 
         //$this->registerConfig();
         //$this->registerTranslations();
@@ -74,7 +74,8 @@ class CoreServiceProvider extends ServiceProvider
     /**
      * Register the filters.
      *
-     * @param  Router $router
+     * @param Router $router
+     *
      * @return void
      */
     public function registerMiddleware(Router $router)
@@ -89,7 +90,7 @@ class CoreServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the modules aliases
+     * Register the modules aliases.
      */
     private function registerModuleResourceNamespaces()
     {
@@ -100,9 +101,9 @@ class CoreServiceProvider extends ServiceProvider
         }
     }
 
-
     /**
-     * Register the view namespaces for the modules
+     * Register the view namespaces for the modules.
+     *
      * @param Module $module
      */
     protected function registerViewNamespace(Module $module)
@@ -112,12 +113,13 @@ class CoreServiceProvider extends ServiceProvider
         }
         $this->app['view']->addNamespace(
             $module->getName(),
-            $module->getPath() . '/Resources/views'
+            $module->getPath().'/Resources/views'
         );
     }
 
     /**
-     * Register the language namespaces for the modules
+     * Register the language namespaces for the modules.
+     *
      * @param Module $module
      */
     protected function registerLanguageNamespace(Module $module)
@@ -129,18 +131,18 @@ class CoreServiceProvider extends ServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, $moduleName);
         } else {
-            $this->loadTranslationsFrom($module->getPath() . '/Resources/lang', $moduleName);
+            $this->loadTranslationsFrom($module->getPath().'/Resources/lang', $moduleName);
         }
     }
 
-
     /**
-     * Register the config namespace
+     * Register the config namespace.
+     *
      * @param Module $module
      */
     private function registerConfigNamespace(Module $module)
     {
-        $files = $this->app['files']->files($module->getPath() . '/Config');
+        $files = $this->app['files']->files($module->getPath().'/Config');
 
         $package = $module->getName();
 
@@ -153,7 +155,7 @@ class CoreServiceProvider extends ServiceProvider
             );
 
             $this->publishes([
-                $file => config_path($filename . '.php'),
+                $file => config_path($filename.'.php'),
             ]);
         }
     }
@@ -161,17 +163,17 @@ class CoreServiceProvider extends ServiceProvider
     /**
      * @param $file
      * @param $package
+     *
      * @return string
      */
     private function getConfigFilename($file, $package)
     {
         $name = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($file));
 
-        $filename = $this->prefix . '.' . $package . '.' . $name;
+        $filename = $this->prefix.'.'.$package.'.'.$name;
 
         return $filename;
     }
-
 
     /**
      * Get the services provided by the provider.
@@ -180,7 +182,6 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
-
 }

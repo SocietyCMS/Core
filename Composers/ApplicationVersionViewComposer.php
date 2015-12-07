@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Composers;
+<?php
+
+namespace Modules\Core\Composers;
 
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Contracts\Filesystem\Filesystem;
@@ -37,7 +39,8 @@ class ApplicationVersionViewComposer
     }
 
     /**
-     * Get the decoded contents from the main composer.json file
+     * Get the decoded contents from the main composer.json file.
+     *
      * @return object
      */
     private function getComposerFile()

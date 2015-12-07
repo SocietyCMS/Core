@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Repositories\Eloquent;
+<?php
+
+namespace Modules\Core\Repositories\Eloquent;
 
 use Illuminate\Support\Str;
 use Modules\Core\Repositories\SlugRepository;
@@ -6,8 +8,10 @@ use Modules\Core\Repositories\SlugRepository;
 abstract class EloquentSlugRepository extends EloquentBaseRepository implements SlugRepository
 {
     /**
-     * Find a resource by an given Slug
-     * @param  string $slug
+     * Find a resource by an given Slug.
+     *
+     * @param string $slug
+     *
      * @return object
      */
     public function findBySlug($slug)
@@ -16,8 +20,10 @@ abstract class EloquentSlugRepository extends EloquentBaseRepository implements 
     }
 
     /**
-     * Generate a unique Slug for a given Title
-     * @param  string $title
+     * Generate a unique Slug for a given Title.
+     *
+     * @param string $title
+     *
      * @return object
      */
     public function getSlugForTitle($title)
@@ -29,10 +35,9 @@ abstract class EloquentSlugRepository extends EloquentBaseRepository implements 
             $pieces = explode('-', $latestSlug);
             $number = end($pieces);
 
-            return $slug . '-' . ($number + 1);
+            return $slug.'-'.($number + 1);
         }
 
         return $slug;
     }
-
 }

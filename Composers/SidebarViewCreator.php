@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Composers;
+<?php
+
+namespace Modules\Core\Composers;
 
 use Maatwebsite\Sidebar\Presentation\SidebarRenderer;
 use Modules\Core\Sidebar\AdminSidebar;
@@ -16,7 +18,7 @@ class SidebarViewCreator
     protected $renderer;
 
     /**
-     * @param AdminSidebar $sidebar
+     * @param AdminSidebar    $sidebar
      * @param SidebarRenderer $renderer
      */
     public function __construct(AdminSidebar $sidebar, SidebarRenderer $renderer)

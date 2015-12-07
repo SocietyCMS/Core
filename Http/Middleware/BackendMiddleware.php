@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Http\Middleware;
+<?php
+
+namespace Modules\Core\Http\Middleware;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
@@ -46,8 +48,9 @@ class BackendMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     *
      * @return mixed
      */
     public function handle($request, \Closure $next)
@@ -60,7 +63,6 @@ class BackendMiddleware
             // Redirect to the login page
             return $this->redirect->route('login');
         }
-
 
         // Check if the user has access to the dashboard page
         if (!$this->auth->hasAccess('dashboard.dashboard.index')) {

@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Http\Controllers;
+<?php
+
+namespace Modules\Core\Http\Controllers;
 
 use Dingo\Api\Http\Response;
 use Dingo\Api\Routing\Helpers;
@@ -13,8 +15,10 @@ class ApiBaseController extends Controller
     }
 
     /**
-     * return success message
+     * return success message.
+     *
      * @param $message
+     *
      * @return mixed
      */
     protected function success($message)
@@ -23,7 +27,8 @@ class ApiBaseController extends Controller
     }
 
     /**
-     * resource successfully created
+     * resource successfully created.
+     *
      * @return mixed
      */
     protected function successCreated()
@@ -32,7 +37,7 @@ class ApiBaseController extends Controller
     }
 
     /**
-     * resource successfully updated
+     * resource successfully updated.
      *
      * @return mixed
      */
@@ -42,7 +47,7 @@ class ApiBaseController extends Controller
     }
 
     /**
-     * resource successfully updated
+     * resource successfully updated.
      *
      * @return mixed
      */

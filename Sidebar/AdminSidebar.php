@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Sidebar;
+<?php
+
+namespace Modules\Core\Sidebar;
 
 use Illuminate\Contracts\Container\Container;
 use Maatwebsite\Sidebar\Menu;
@@ -26,9 +28,9 @@ class AdminSidebar implements Sidebar, ShouldCache
     protected $container;
 
     /**
-     * @param Menu $menu
+     * @param Menu                $menu
      * @param RepositoryInterface $modules
-     * @param Container $container
+     * @param Container           $container
      */
     public function __construct(Menu $menu, RepositoryInterface $modules, Container $container)
     {
@@ -38,13 +40,13 @@ class AdminSidebar implements Sidebar, ShouldCache
     }
 
     /**
-     * Build your sidebar implementation here
+     * Build your sidebar implementation here.
      */
     public function build()
     {
         foreach ($this->modules->enabled() as $module) {
             $name = studly_case($module->getName());
-            $class = 'Modules\\' . $name . '\\MenuExtenders\\SidebarExtender';
+            $class = 'Modules\\'.$name.'\\MenuExtenders\\SidebarExtender';
 
             if (class_exists($class)) {
                 $extender = $this->container->make($class);
