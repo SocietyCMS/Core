@@ -9,10 +9,13 @@ use Illuminate\Routing\Controller;
  */
 class AdminBaseController extends Controller
 {
+
+    protected $apiDispatcher;
     /**
      * AdminBaseController constructor.
      */
     public function __construct()
     {
+        $this->apiDispatcher = app('Dingo\Api\Dispatcher');
     }
 }
