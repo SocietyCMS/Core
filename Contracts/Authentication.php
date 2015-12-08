@@ -89,6 +89,15 @@ interface Authentication
     public function hasAccess($permission);
 
     /**
+     * Determines if the current user is in the given Role.
+     *
+     * @param $role
+     *
+     * @return bool
+     */
+    public function inRole($role);
+
+    /**
      * Check if the user is logged in.
      *
      * @return mixed

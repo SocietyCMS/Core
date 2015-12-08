@@ -30,9 +30,8 @@ class PermissionMiddleware
     }
 
     /**
-     * @param Request  $request
-     * @param callable $next
-     *
+     * @param Request           $request
+     * @param callable|\Closure $next
      * @return mixed
      */
     public function handle(Request $request, \Closure $next)
