@@ -18,7 +18,8 @@
     "Collective\\Html\\HtmlServiceProvider",
     "Dingo\\Api\\Provider\\LaravelServiceProvider",
     "Tymon\\JWTAuth\\Providers\\JWTAuthServiceProvider",
-    "Prettus\\Repository\\Providers\\RepositoryServiceProvider"
+    "Prettus\\Repository\\Providers\\RepositoryServiceProvider",
+    "Spatie\\MediaLibrary\\MediaLibraryServiceProvider"
   ],
   "aliases": {
     "Form": "Collective\\Html\\FormFacade",
