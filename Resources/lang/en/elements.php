@@ -9,6 +9,7 @@ return [
         'delete'          => 'Delete',
         'reset'           => 'Reset',
         'update and back' => 'Update and go back',
+        'optional details'=> 'Optional Details'
     ],
     'state' => [
         'enabled'   => 'Enabled',
