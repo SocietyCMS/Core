@@ -23,7 +23,7 @@ return [
     'change state' => [
         'enable'  => 'Enable',
         'disable' => 'Disable',
-        'publish' => 'Publish',
+        'publish' => 'Publish'
     ],
     'action' => [
         'add resource'    => 'Add :name',
