@@ -5,6 +5,7 @@ namespace Modules\Core\Http\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request as RequestFacade;
 use Laracasts\Flash\Flash;
 use Modules\Core\Contracts\Authentication;
 
@@ -47,7 +48,11 @@ class PermissionMiddleware
         if (!$this->auth->hasAccess($permission)) {
             Flash::error(trans('core::core.permission denied', ['permission' => $permission]));
 
-            return Redirect::back();
+            if(empty(RequestFacade::header('referer')) || RequestFacade::header('referer') == Redirect::getUrlGenerator()->previous()) {
+                return Redirect::route('dashboard.index');
+            } else {
+                return Redirect::back();
+            }
         }
 
         return $next($request);

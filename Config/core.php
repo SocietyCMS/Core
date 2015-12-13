@@ -40,6 +40,7 @@ return [
         'api' => [
             'backend' => [
                 'api.auth',
+                'permissions',
             ],
             'frontend' => [
             ],

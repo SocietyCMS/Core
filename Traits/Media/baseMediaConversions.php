@@ -11,7 +11,7 @@ trait baseMediaConversions
             ->performOnCollections('images');
 
         $this->addMediaConversion('square200')
-            ->setManipulations(['w' => 200, 'h' => 100, 'fit' => 'crop'])
+            ->setManipulations(['w' => 200, 'h' => 200, 'fit' => 'crop'])
             ->performOnCollections('images');
 
         $this->addMediaConversion('wide160')
