@@ -4,6 +4,7 @@ namespace Modules\Core\Traits\Media;
 
 trait baseMediaConversions
 {
+
     public function registerMediaConversions()
     {
         $this->addMediaConversion('square100')
@@ -38,8 +39,12 @@ trait baseMediaConversions
             ->setManipulations(['w' => 400, 'h' => 400, 'fit' => 'max'])
             ->performOnCollections('images');
 
+        $this->addMediaConversion('cover400')
+            ->setManipulations(['w' => 400, 'h' => 400,  'fit' => 'crop'])
+            ->performOnCollections('images');
+
         $this->addMediaConversion('cover900')
-            ->setManipulations(['w' => 900, 'h' => 200, 'fit' => 'crop', 'fm' => 'png'])
+            ->setManipulations(['w' => 900, 'h' => 200,  'fit' => 'crop'])
             ->performOnCollections('images');
     }
 }
