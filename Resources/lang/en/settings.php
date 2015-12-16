@@ -1,6 +1,12 @@
 <?php
 
 return [
-    'site-name'        => 'Site name',
-    'site-description' => 'Site description',
+
+    'website' => [
+        'title' => 'Website',
+
+        'site-name'        => 'Site name',
+        'site-description' => 'Site description',
+    ],
+
 ];
