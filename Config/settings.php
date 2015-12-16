@@ -6,7 +6,7 @@ return [
         'site-name'        => [
             'title'   => 'core::settings.website.site-name',
             'view'    => 'text',
-            'default' => 'core::core.societycms',
+            'default' => trans('core::core.societycms'),
         ],
         'site-description' => [
             'title' => 'core::settings.website.site-description',
