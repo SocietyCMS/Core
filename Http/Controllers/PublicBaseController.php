@@ -2,7 +2,7 @@
 
 namespace Modules\Core\Http\Controllers;
 
-use Illuminate\Routing\Controller;
+use Pingpong\Modules\Routing\Controller;
 
 abstract class PublicBaseController extends Controller
 {
