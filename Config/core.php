@@ -32,10 +32,12 @@ return [
     */
     'middleware' => [
         'backend' => [
+            'societyInstalled',
             'auth.backend',
             'permissions',
         ],
         'frontend' => [
+            'societyInstalled',
         ],
         'api' => [
             'backend' => [

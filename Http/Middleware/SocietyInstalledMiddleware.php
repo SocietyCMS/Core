@@ -20,7 +20,7 @@ class SocietyInstalledMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (!file_exists(base_path('.env')) || !Schema::hasTable('users')) {
+        if (!file_exists(base_path('.env')) || !Schema::hasTable('user__users')) {
             throw new \Exception('SocietyCMS is not yet installed');
         }
 
