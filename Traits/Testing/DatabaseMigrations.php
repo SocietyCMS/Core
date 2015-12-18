@@ -11,6 +11,8 @@ trait DatabaseMigrations
     {
         $this->artisan('module:migrate');
 
+        $this->artisan('module:seed');
+
         $this->beforeApplicationDestroyed(function () {
             $this->artisan('module:migrate-rollback');
         });

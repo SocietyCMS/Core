@@ -26,5 +26,4 @@ class InstalledTest extends TestCase
         $this->visit(route('dashboard.index'))
             ->see('Welcome to SocietyCMS');
     }
-    
 }
