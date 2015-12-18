@@ -14,6 +14,7 @@ abstract class PublicBaseController extends Controller
     public function __construct()
     {
         $this->auth = app('Modules\Core\Contracts\Authentication');
-        view()->share('currentUser', $this->auth->check());
+        // TODO Remove? no current user in public section
+        //view()->share('currentUser', $this->auth->check());
     }
 }

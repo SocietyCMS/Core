@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Http\Controllers;
 
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 
 /**
@@ -9,6 +10,8 @@ use Illuminate\Routing\Controller;
  */
 class AdminBaseController extends Controller
 {
+    use ValidatesRequests;
+
 
     protected $apiDispatcher;
     /**
