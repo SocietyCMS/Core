@@ -2,13 +2,19 @@
 
 namespace Modules\Core\Providers;
 
+use Config;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Maatwebsite\Sidebar\SidebarManager;
 use Modules\Core\Sidebar\AdminSidebar;
 use Pingpong\Modules\Module;
+use Setting;
 
+/**
+ * Class CoreServiceProvider
+ * @package Modules\Core\Providers
+ */
 class CoreServiceProvider extends ServiceProvider
 {
     /**
@@ -47,10 +53,6 @@ class CoreServiceProvider extends ServiceProvider
 
         $this->registerMiddleware($this->app['router']);
         $this->registerModuleResourceNamespaces();
-
-        //$this->registerConfig();
-        //$this->registerTranslations();
-        //$this->registerViews();
     }
 
     /**
