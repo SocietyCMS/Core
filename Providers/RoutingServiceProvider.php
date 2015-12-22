@@ -97,7 +97,8 @@ abstract class RoutingServiceProvider extends ServiceProvider
         $frontend = $this->getFrontendRoute();
 
         if ($frontend && file_exists($frontend)) {
-            $router->group(['middleware' => config('society.core.core.middleware.frontend', [])],
+            $router->group([
+                'middleware' => config('society.core.core.middleware.frontend', [])],
                 function (Router $router) use ($frontend) {
                     require $frontend;
                 });
