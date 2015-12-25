@@ -41,8 +41,8 @@ return [
         ],
         'api' => [
             'backend' => [
-                'api.auth',
-                'permissions',
+               // 'api.auth',
+               // 'permissions',
             ],
             'frontend' => [
             ],
