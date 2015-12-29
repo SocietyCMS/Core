@@ -13,6 +13,9 @@ class AdminBaseController extends Controller
     use ValidatesRequests;
 
 
+    /**
+     * @var \Illuminate\Foundation\Application|mixed
+     */
     protected $apiDispatcher;
     /**
      * AdminBaseController constructor.
