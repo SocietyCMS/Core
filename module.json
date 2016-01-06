@@ -19,12 +19,14 @@
     "Dingo\\Api\\Provider\\LaravelServiceProvider",
     "Tymon\\JWTAuth\\Providers\\JWTAuthServiceProvider",
     "Prettus\\Repository\\Providers\\RepositoryServiceProvider",
-    "Spatie\\MediaLibrary\\MediaLibraryServiceProvider"
+    "Spatie\\MediaLibrary\\MediaLibraryServiceProvider",
+    "Vinkla\\Hashids\\HashidsServiceProvider"
   ],
   "aliases": {
     "Form": "Collective\\Html\\FormFacade",
     "Flash": "Laracasts\\Flash\\Flash",
-    "JWTAuth": "Tymon\\JWTAuth\\Facades\\JWTAuth"
+    "JWTAuth": "Tymon\\JWTAuth\\Facades\\JWTAuth",
+    "Hashids": "Vinkla\\Hashids\\Facades\\Hashids"
   },
   "files": [
     "start.php"
