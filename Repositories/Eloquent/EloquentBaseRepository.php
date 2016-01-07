@@ -9,9 +9,9 @@ use Prettus\Repository\Traits\CacheableRepository;
 /**
  * Class EloquentBaseRepository.
  */
-abstract class EloquentBaseRepository extends BaseRepository implements CacheableInterface
+abstract class EloquentBaseRepository extends BaseRepository //implements CacheableInterface
 {
-    use CacheableRepository;
+    //use CacheableRepository;
     /**
      * Find data by multiple fields or create if not exists.
      *
