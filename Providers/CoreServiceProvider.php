@@ -71,6 +71,8 @@ class CoreServiceProvider extends ServiceProvider
 
             return $app['files']->isFile(base_path('.env')) && $hasTable;
         });
+
+        $this->registerModuleVendorDependencies();
     }
 
     /**
@@ -100,6 +102,16 @@ class CoreServiceProvider extends ServiceProvider
             $this->registerViewNamespace($module);
             $this->registerLanguageNamespace($module);
             $this->registerConfigNamespace($module);
+        }
+    }
+
+    /**
+     * Register the modules dependencies.
+     */
+    private function registerModuleVendorDependencies()
+    {
+        foreach ($this->app['modules']->enabled() as $module) {
+            $this->registerVendorConfig($module);
         }
     }
 
@@ -177,6 +189,28 @@ class CoreServiceProvider extends ServiceProvider
         return $filename;
     }
 
+    /**
+     * Register the config namespace.
+     *
+     * @param Module $module
+     */
+    private function registerVendorConfig(Module $module)
+    {
+        $files = $this->app['files']->files($module->getPath().'/Config/Vendor');
+
+        foreach ($files as $file) {
+            $filename = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($file));
+
+            $this->mergeConfigFrom(
+                $file,
+                $filename
+            );
+
+            $this->publishes([
+                $file => config_path($filename.'.php'),
+            ]);
+        }
+    }
     /**
      * Get the services provided by the provider.
      *
