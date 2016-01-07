@@ -167,10 +167,6 @@ class CoreServiceProvider extends ServiceProvider
                 $file,
                 $filename
             );
-
-            $this->publishes([
-                $file => config_path($filename.'.php'),
-            ]);
         }
     }
 
@@ -205,10 +201,6 @@ class CoreServiceProvider extends ServiceProvider
                 $file,
                 $filename
             );
-
-            $this->publishes([
-                $file => config_path($filename.'.php'),
-            ]);
         }
     }
     /**
