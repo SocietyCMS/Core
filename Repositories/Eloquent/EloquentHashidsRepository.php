@@ -14,17 +14,11 @@ abstract class EloquentHashidsRepository extends EloquentBaseRepository implemen
      * @param array $columns
      * @return mixed
      */
-    public function find($id, $columns = array('*'))
+    public function findByUid($id, $columns = array('*'))
     {
-        $id = Hashids::decode($id);
-
-        if (empty($id)) {
-            throw (new \Illuminate\Database\Eloquent\ModelNotFoundException())->setModel(get_class($this->model));
-        }
-
         $this->applyCriteria();
         $this->applyScope();
-        $model = $this->model->limit(1)->findOrFail($id, $columns)->first();
+        $model = $this->model->where('uid', '=', $id)->firstOrFail($columns);
         $this->resetModel();
 
         return $this->parserResult($model);
