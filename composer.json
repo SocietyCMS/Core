@@ -32,6 +32,6 @@
     "laracasts/presenter": "^0.2.1",
     "spatie/laravel-medialibrary": "^3.2",
     "guzzlehttp/guzzle": "~5.3|~6.0",
-    "vinkla/hashids": "^2.2"
+    "hashids/hashids": "1.0.5"
   }
 }

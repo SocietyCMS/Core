@@ -2,8 +2,8 @@
 
 namespace Modules\Core\Traits\Entities;
 
+use Hashids\Hashids;
 use Illuminate\Database\Eloquent\Model;
-use Vinkla\Hashids\Facades\Hashids;
 
 /**
  * Class EloquentHashids
@@ -19,20 +19,33 @@ trait EloquentHashids
      */
     public static function bootEloquentHashids()
     {
-        static::created(function (Model $model)
-        {
-            $model->{static::getHashidColumn($model)} = Hashids::connection(static::getHashidConnection($model))->encode(static::getHashidEncodingValue($model));
+        static::created(function (Model $model) {
+            $model->{static::getHashidColumn($model)} = (new Hashids(
+                static::getHashidConnection($model),
+                static::getHashidLength($model)))
+                ->encode(static::getHashidEncodingValue($model));
             $model->save();
         });
     }
+
     /**
      * @param Model $model
      * @return string
      */
     public static function getHashidConnection(Model $model)
     {
-        return 'table.' . $model->table;
+        return 'table.'.$model->table;
     }
+
+    /**
+     * @param Model $model
+     * @return string
+     */
+    public static function getHashidLength(Model $model)
+    {
+        return 4;
+    }
+
     /**
      * @param Model $model
      * @return string
@@ -41,6 +54,7 @@ trait EloquentHashids
     {
         return 'uid';
     }
+
     /**
      * @param Model $model
      * @return mixed
