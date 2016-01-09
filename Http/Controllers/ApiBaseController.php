@@ -55,4 +55,14 @@ class ApiBaseController extends Controller
     {
         return $this->success('Deleted')->statusCode(200);
     }
+
+    /**
+     * resource successfully updated.
+     *
+     * @return mixed
+     */
+    protected function successRestored()
+    {
+        return $this->success('Restored')->statusCode(200);
+    }
 }
