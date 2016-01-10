@@ -1,6 +1,7 @@
 <?php
 
 return [
-    'content'  => 'Content',
-    'workshop' => 'Workshop',
+    'collaboration' => 'Collaboration',
+    'content'       => 'Content',
+    'workshop'      => 'Workshop',
 ];
