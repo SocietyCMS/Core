@@ -17,11 +17,18 @@ class AdminBaseController extends Controller
      * @var \Illuminate\Foundation\Application|mixed
      */
     protected $apiDispatcher;
+
+    /**
+     * @var Authentication
+     */
+    protected $auth;
+
     /**
      * AdminBaseController constructor.
      */
     public function __construct()
     {
+        $this->auth = app('Modules\Core\Contracts\Authentication');
         $this->apiDispatcher = app('Dingo\Api\Dispatcher');
     }
 }

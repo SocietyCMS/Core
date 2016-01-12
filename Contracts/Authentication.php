@@ -34,39 +34,11 @@ interface Authentication
     public function activate($userId, $code);
 
     /**
-     * Assign a role to the given user.
-     *
-     * @param \Modules\User\Repositories\UserRepository $user
-     * @param \Modules\User\Repositories\RoleRepository $role
-     *
-     * @return mixed
-     */
-    public function assignRole($user, $role);
-
-    /**
      * Log the user out of the application.
      *
      * @return mixed
      */
     public function logout();
-
-    /**
-     * Create an activation code for the given user.
-     *
-     * @param $user
-     *
-     * @return mixed
-     */
-    public function createActivation($user);
-
-    /**
-     * Create a reminders code for the given user.
-     *
-     * @param $user
-     *
-     * @return mixed
-     */
-    public function createReminderCode($user);
 
     /**
      * Completes the reset password process.
@@ -95,7 +67,16 @@ interface Authentication
      *
      * @return bool
      */
-    public function inRole($role);
+    public function hasRole($role);
+
+    /**
+     * Determines if the current user has a given Permission.
+     *
+     * @param $permission
+     *
+     * @return bool
+     */
+    public function can($permission);
 
     /**
      * Check if the user is logged in.
@@ -103,6 +84,13 @@ interface Authentication
      * @return mixed
      */
     public function check();
+
+    /**
+     * Get the currently loggedin user.
+     *
+     * @return mixed
+     */
+    public function user();
 
     /**
      * Get the ID for the currently authenticated user.

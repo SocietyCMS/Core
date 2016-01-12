@@ -1,1 +1,5 @@
 <?php
+
+get('/test', function(){
+
+});

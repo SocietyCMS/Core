@@ -19,7 +19,7 @@ class CurrentUserComposer
 
     public function compose(View $view)
     {
-        $currentUser = $this->auth->check();
+        $currentUser = $this->auth->user();
         $view->with('currentUser', $currentUser);
     }
 }

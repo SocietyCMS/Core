@@ -1,31 +1,31 @@
 <?php
-
 return [
-
     /*
     |--------------------------------------------------------------------------
     | JWT Authentication Secret
     |--------------------------------------------------------------------------
     |
-    | Don't forget to set this, as it will be used to sign your tokens.
-    | A helper command is provided for this: `php artisan jwt:generate`
+    | Don't forget to set this in your .env file, as it will be used to sign
+    | your tokens. A helper command is provided for this:
+    | `php artisan jwt:secret`
     |
     */
-
-    'secret' => env('JWT_SECRET', 'changeme'),
-
+    'secret' => env('JWT_SECRET'),
     /*
     |--------------------------------------------------------------------------
     | JWT time to live
     |--------------------------------------------------------------------------
     |
     | Specify the length of time (in minutes) that the token will be valid for.
-    | Defaults to 1 hour
+    | Defaults to 1 hour.
+    |
+    | You can also set this to null, to yield a never expiring token.
+    | Some people may want this behaviour for e.g. a mobile app.
+    | This is not particularly recommended, so make sure you have appropriate
+    | systems in place to revoke the token if necessary.
     |
     */
-
-    'ttl' => 60,
-
+    'ttl' => env('JWT_TTL', 120),
     /*
     |--------------------------------------------------------------------------
     | Refresh time to live
@@ -37,9 +37,7 @@ return [
     | Defaults to 2 weeks
     |
     */
-
-    'refresh_ttl' => 20160,
-
+    'refresh_ttl' => env('JWT_REFRESH_TTL', 20160),
     /*
     |--------------------------------------------------------------------------
     | JWT hashing algorithm
@@ -51,21 +49,18 @@ return [
     | for possible values
     |
     */
-
-    'algo' => 'HS256',
+    'algo' => env('JWT_ALGO', 'HS256'),
 
     /*
-    |--------------------------------------------------------------------------
-    | User Model namespace
-    |--------------------------------------------------------------------------
-    |
-    | Specify the full namespace to your User model.
-    | e.g. 'Acme\Entities\User'
-    |
-    */
-
-    'user' => 'Modules\User\Entities\Sentinel\EloquentUser',
-
+   |--------------------------------------------------------------------------
+   | User Model namespace
+   |--------------------------------------------------------------------------
+   |
+   | Specify the full namespace to your User model.
+   | e.g. 'Acme\Entities\User'
+   |
+   */
+    'user' => 'Modules\User\Entities\Entrust\EloquentUser',
     /*
     |--------------------------------------------------------------------------
     | User identifier
@@ -75,7 +70,6 @@ return [
     | claim of the token payload.
     |
     */
-
     'identifier' => 'id',
 
     /*
@@ -88,9 +82,7 @@ return [
     | present in the payload.
     |
     */
-
     'required_claims' => ['iss', 'iat', 'exp', 'nbf', 'sub', 'jti'],
-
     /*
     |--------------------------------------------------------------------------
     | Blacklist Enabled
@@ -100,9 +92,20 @@ return [
     | If you do not want or need this functionality, then set this to false.
     |
     */
-
     'blacklist_enabled' => env('JWT_BLACKLIST_ENABLED', true),
-
+    /*
+    | -------------------------------------------------------------------------
+    | Blacklist Grace Period
+    | -------------------------------------------------------------------------
+    |
+    | When multiple concurrent requests are made with the same JWT,
+    | it is possible that some of them fail, due to token regeneration
+    | on every request.
+    |
+    | Set grace period in seconds to prevent parallel request failure.
+    |
+    */
+    'blacklist_grace_period' => env('JWT_BLACKLIST_GRACE_PERIOD', 0),
     /*
     |--------------------------------------------------------------------------
     | Providers
@@ -111,19 +114,16 @@ return [
     | Specify the various providers used throughout the package.
     |
     */
-
     'providers' => [
-
         /*
-        |--------------------------------------------------------------------------
-        | User Provider
-        |--------------------------------------------------------------------------
-        |
-        | Specify the provider that is used to find the user based
-        | on the subject claim
-        |
-        */
-
+       |--------------------------------------------------------------------------
+       | User Provider
+       |--------------------------------------------------------------------------
+       |
+       | Specify the provider that is used to find the user based
+       | on the subject claim
+       |
+       */
         'user' => 'Tymon\JWTAuth\Providers\User\EloquentUserAdapter',
 
         /*
@@ -134,9 +134,7 @@ return [
         | Specify the provider that is used to create and decode the tokens.
         |
         */
-
-        'jwt' => 'Tymon\JWTAuth\Providers\JWT\NamshiAdapter',
-
+        'jwt' => Tymon\JWTAuth\Providers\JWT\NamshiAdapter::class,
         /*
         |--------------------------------------------------------------------------
         | Authentication Provider
@@ -145,11 +143,7 @@ return [
         | Specify the provider that is used to authenticate users.
         |
         */
-
-        'auth' => function ($app) {
-            return new Modules\User\Repositories\Sentinel\SentinelAuthAdapter($app['auth']);
-        },
-
+        'auth' => Tymon\JWTAuth\Providers\Auth\IlluminateAuthAdapter::class,
         /*
         |--------------------------------------------------------------------------
         | Storage Provider
@@ -158,11 +152,6 @@ return [
         | Specify the provider that is used to store tokens in the blacklist
         |
         */
-
-        'storage' => function ($app) {
-            return new Tymon\JWTAuth\Providers\Storage\IlluminateCacheAdapter($app['cache']);
-        }
-
+        'storage' => Tymon\JWTAuth\Providers\Storage\IlluminateCacheAdapter::class
     ]
-
 ];

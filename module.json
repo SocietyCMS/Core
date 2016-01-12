@@ -20,13 +20,15 @@
     "Tymon\\JWTAuth\\Providers\\JWTAuthServiceProvider",
     "Prettus\\Repository\\Providers\\RepositoryServiceProvider",
     "Spatie\\MediaLibrary\\MediaLibraryServiceProvider",
-    "Vinkla\\Hashids\\HashidsServiceProvider"
+    "Vinkla\\Hashids\\HashidsServiceProvider",
+    "Zizaco\\Entrust\\EntrustServiceProvider"
   ],
   "aliases": {
     "Form": "Collective\\Html\\FormFacade",
     "Flash": "Laracasts\\Flash\\Flash",
     "JWTAuth": "Tymon\\JWTAuth\\Facades\\JWTAuth",
-    "Hashids": "Vinkla\\Hashids\\Facades\\Hashids"
+    "Hashids": "Vinkla\\Hashids\\Facades\\Hashids",
+    "Entrust": "Zizaco\\Entrust\\EntrustFacade"
   },
   "files": [
     "start.php"
