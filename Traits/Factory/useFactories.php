@@ -2,9 +2,8 @@
 
 namespace Modules\Core\Traits\Factory;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Faker\Generator as FakerGenerator;
-
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 trait useFactories
 {
