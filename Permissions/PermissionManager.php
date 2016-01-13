@@ -2,6 +2,9 @@
 
 namespace Modules\Core\Permissions;
 
+use Illuminate\Contracts\Container\Container;
+use Modules\User\Entities\Entrust\EloquentPermission;
+
 class PermissionManager
 {
     /**
@@ -13,6 +16,7 @@ class PermissionManager
      */
     public function __construct()
     {
+        $this->container = app(Container::class);
         $this->module = app('modules');
     }
 
@@ -59,21 +63,45 @@ class PermissionManager
         return $permissions;
     }
 
-    /**
-     * @param $checkedPermission
-     *
-     * @return bool
-     */
-    protected function getState($checkedPermission)
+
+
+    public function registerDefault($module)
     {
-        if ($checkedPermission == 'true') {
-            return true;
-        }
+            $name = studly_case($module->getName());
+            $class = 'Modules\\' . $name . '\\Installer\\RegisterDefaultPermissions';
 
-        if ($checkedPermission == 'false') {
-            return;
-        }
+            if (class_exists($class)) {
+                $registerDefaultPermissions = $this->container->make($class);
 
-        return;
+                if(property_exists($registerDefaultPermissions, 'defaultPermissions')) {
+                    foreach($registerDefaultPermissions->defaultPermissions as $permissionName => $permissionOption)
+                    {
+                        $permission = new EloquentPermission;
+                        $permission->name         = $permissionName;
+                        $permission->display_name = $permissionOption['display_name'];
+                        $permission->description  = $permissionOption['description'];
+                        $permission->save();
+                    }
+                }
+
+            }
+    }
+
+    public function rollbackDefault($module)
+    {
+        $name = studly_case($module->getName());
+        $class = 'Modules\\' . $name . '\\Installer\\RegisterDefaultPermissions';
+
+        if (class_exists($class)) {
+            $registerDefaultPermissions = $this->container->make($class);
+
+            if(property_exists($registerDefaultPermissions, 'defaultPermissions')) {
+
+
+                $permission = EloquentPermission::whereIn('name', array_keys($registerDefaultPermissions->defaultPermissions));
+                $permission->delete();
+            }
+
+        }
     }
 }
