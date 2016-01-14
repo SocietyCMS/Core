@@ -5,6 +5,10 @@ namespace Modules\Core\Permissions;
 use Illuminate\Contracts\Container\Container;
 use Modules\User\Entities\Entrust\EloquentPermission;
 
+/**
+ * Class PermissionManager
+ * @package Modules\Core\Permissions
+ */
 class PermissionManager
 {
     /**
@@ -18,31 +22,7 @@ class PermissionManager
     {
         $this->container = app(Container::class);
         $this->module = app('modules');
-    }
-
-    /**
-     * Return a correctly type casted permissions array.
-     *
-     * @param $permissions
-     *
-     * @return array
-     */
-    public function clean($permissions)
-    {
-        if (!$permissions) {
-            return [];
-        }
-        $cleanedPermissions = [];
-
-        $allPermission = $this->all();
-
-        foreach ($permissions as $permissionGroupName => $checkedPermission) {
-            foreach (array_get($allPermission, $permissionGroupName) as $permissionName) {
-                $cleanedPermissions[$permissionName] = $this->getState($checkedPermission);
-            }
-        }
-
-        return $cleanedPermissions;
+        $this->permissions = new EloquentPermission;
     }
 
     /**
@@ -52,19 +32,23 @@ class PermissionManager
      */
     public function all()
     {
-        $permissions = [];
-        foreach ($this->module->enabled() as $enabledModule) {
-            $configuration = config(strtolower('society.'.$enabledModule->getName()).'.permissions');
-            if ($configuration) {
-                $permissions[$enabledModule->getName()] = $configuration;
-            }
-        }
+        return $this->permissions->orderBy('module')->get()->groupBy('module');
+    }
 
-        return $permissions;
+    /**
+     * Get the permissions from all the enabled modules.
+     *
+     * @return array
+     */
+    public function allModulePermissions()
+    {
+        return $this->permissions->orderBy('module')->get()->groupBy('module');
     }
 
 
-
+    /**
+     * @param $module
+     */
     public function registerDefault($module)
     {
             $name = studly_case($module->getName());
@@ -76,17 +60,24 @@ class PermissionManager
                 if(property_exists($registerDefaultPermissions, 'defaultPermissions')) {
                     foreach($registerDefaultPermissions->defaultPermissions as $permissionName => $permissionOption)
                     {
-                        $permission = new EloquentPermission;
-                        $permission->name         = $permissionName;
-                        $permission->display_name = $permissionOption['display_name'];
-                        $permission->description  = $permissionOption['description'];
-                        $permission->save();
+                        if(!$this->permissions->where('name', '=', "{$module->getLowerName()}::$permissionName")->first())
+                        {
+                            $this->permissions->create([
+                               'name' =>  "{$module->getLowerName()}::$permissionName",
+                               'display_name' => $permissionOption['display_name'],
+                               'description' => $permissionOption['description'],
+                               'module' => $module->getLowerName()
+                            ]);
+                        }
                     }
                 }
 
             }
     }
 
+    /**
+     * @param $module
+     */
     public function rollbackDefault($module)
     {
         $name = studly_case($module->getName());
@@ -96,8 +87,6 @@ class PermissionManager
             $registerDefaultPermissions = $this->container->make($class);
 
             if(property_exists($registerDefaultPermissions, 'defaultPermissions')) {
-
-
                 $permission = EloquentPermission::whereIn('name', array_keys($registerDefaultPermissions->defaultPermissions));
                 $permission->delete();
             }
