@@ -36,10 +36,13 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected $middleware = [
         'Core' => [
-            'permissions'      => 'PermissionMiddleware',
-            'auth.backend'     => 'BackendMiddleware',
             'societyInstalled' => 'SocietyInstalledMiddleware',
         ],
+        'User' => [
+            'role' => 'Entrust\Role',
+            'permission' => 'Entrust\Permission',
+            'ability' => 'Entrust\Ability',
+        ]
     ];
 
     /**

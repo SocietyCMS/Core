@@ -48,31 +48,34 @@ class PermissionManager
 
     /**
      * @param $module
+     * @return bool
      */
     public function registerDefault($module)
     {
-            $name = studly_case($module->getName());
-            $class = 'Modules\\' . $name . '\\Installer\\RegisterDefaultPermissions';
+        $name = studly_case($module->getName());
+        $class = 'Modules\\' . $name . '\\Installer\\RegisterDefaultPermissions';
 
-            if (class_exists($class)) {
-                $registerDefaultPermissions = $this->container->make($class);
+        if (!class_exists($class)) {
+            return false;
+        }
 
-                if(property_exists($registerDefaultPermissions, 'defaultPermissions')) {
-                    foreach($registerDefaultPermissions->defaultPermissions as $permissionName => $permissionOption)
-                    {
-                        if(!$this->permissions->where('name', '=', "{$module->getLowerName()}::$permissionName")->first())
-                        {
-                            $this->permissions->create([
-                               'name' =>  "{$module->getLowerName()}::$permissionName",
-                               'display_name' => $permissionOption['display_name'],
-                               'description' => $permissionOption['description'],
-                               'module' => $module->getLowerName()
-                            ]);
-                        }
-                    }
-                }
+        $registerDefaultPermissions = $this->container->make($class);
 
+        if (!property_exists($registerDefaultPermissions, 'defaultPermissions')) {
+            return false;
+        }
+
+        foreach ($registerDefaultPermissions->defaultPermissions as $permissionName => $permissionOption) {
+            if (!$this->permissions->where('name', '=', "{$module->getLowerName()}::$permissionName")->first()) {
+                $this->permissions->create([
+                    'name'         => "{$module->getLowerName()}::$permissionName",
+                    'display_name' => $permissionOption['display_name'],
+                    'description'  => $permissionOption['description'],
+                    'module'       => $module->getLowerName(),
+                ]);
             }
+        }
+        return true;
     }
 
     /**
