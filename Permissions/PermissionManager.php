@@ -35,16 +35,6 @@ class PermissionManager
         return $this->permissions->orderBy('module')->get()->groupBy('module');
     }
 
-    /**
-     * Get the permissions from all the enabled modules.
-     *
-     * @return array
-     */
-    public function allModulePermissions()
-    {
-        return $this->permissions->orderBy('module')->get()->groupBy('module');
-    }
-
 
     /**
      * @param $module

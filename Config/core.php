@@ -33,6 +33,7 @@ return [
     'middleware' => [
         'backend' => [
             'societyInstalled',
+            'loggedIn'
         ],
         'frontend' => [
             'societyInstalled',

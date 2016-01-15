@@ -38,11 +38,6 @@ class CoreServiceProvider extends ServiceProvider
         'Core' => [
             'societyInstalled' => 'SocietyInstalledMiddleware',
         ],
-        'User' => [
-            'role' => 'Entrust\Role',
-            'permission' => 'Entrust\Permission',
-            'ability' => 'Entrust\Ability',
-        ]
     ];
 
     /**
@@ -102,6 +97,10 @@ class CoreServiceProvider extends ServiceProvider
     private function registerModuleResourceNamespaces()
     {
         foreach ($this->app['modules']->enabled() as $module) {
+
+            $permissionManager = new \Modules\Core\Permissions\PermissionManager();
+            $permissionManager->registerDefault($module);
+
             $this->registerViewNamespace($module);
             $this->registerLanguageNamespace($module);
             $this->registerConfigNamespace($module);
