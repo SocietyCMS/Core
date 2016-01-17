@@ -33,10 +33,13 @@ return [
     'middleware' => [
         'backend' => [
             'societyInstalled',
+            'resolveSidebars',
+            'verifyCsrfToken',
             'loggedIn'
         ],
         'frontend' => [
             'societyInstalled',
+            'verifyCsrfToken',
         ],
         'api' => [
             'backend' => [
