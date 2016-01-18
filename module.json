@@ -20,7 +20,9 @@
     "Tymon\\JWTAuth\\Providers\\JWTAuthServiceProvider",
     "Prettus\\Repository\\Providers\\RepositoryServiceProvider",
     "Spatie\\MediaLibrary\\MediaLibraryServiceProvider",
-    "Zizaco\\Entrust\\EntrustServiceProvider"
+    "Zizaco\\Entrust\\EntrustServiceProvider",
+    "Laravolt\\Avatar\\ServiceProvider",
+    "Intervention\\Image\\ImageServiceProvider"
   ],
   "aliases": {
     "Form": "Collective\\Html\\FormFacade",

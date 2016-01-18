@@ -33,13 +33,13 @@
     "spatie/laravel-medialibrary": "^3.2",
     "guzzlehttp/guzzle": "~5.3|~6.0",
     "hashids/hashids": "1.0.5",
-    "zizaco/entrust": "^1.5"
+    "zizaco/entrust": "^1.5",
+    "laravolt/avatar": "0.3.1"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "0.9.*",
     "phpunit/phpunit": "~4.0",
-    "phpspec/phpspec": "~2.1",
-    "itsgoingd/clockwork": "~1.10"
+    "phpspec/phpspec": "~2.1"
   }
 }
