@@ -57,15 +57,25 @@ class PermissionManager
 
         foreach ($registerDefaultPermissions->defaultPermissions as $permissionName => $permissionOption) {
             if (!$this->permissions->where('name', '=', "{$module->getLowerName()}::$permissionName")->first()) {
-                $this->permissions->create([
-                    'name'         => "{$module->getLowerName()}::$permissionName",
-                    'display_name' => $permissionOption['display_name'],
-                    'description'  => $permissionOption['description'],
-                    'module'       => $module->getLowerName(),
-                ]);
+                $this->registerPermission(
+                    "{$module->getLowerName()}::$permissionName",
+                    $permissionOption['display_name'],
+                    $permissionOption['description'],
+                    $module->getLowerName()
+                );
             }
         }
         return true;
+    }
+
+    public function registerPermission($name, $display_name = null, $description = null, $module = null)
+    {
+        return $this->permissions->create([
+            'name'         => $name,
+            'display_name' => $display_name,
+            'description'  => $description,
+            'module'       => $module,
+        ]);
     }
 
     /**
