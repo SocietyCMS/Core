@@ -93,6 +93,14 @@ interface Authentication
     public function user();
 
     /**
+     * Handle an authentication attempt.
+     *
+     * @param $credentials
+     * @return mixed
+     */
+    public function attempt($credentials);
+
+    /**
      * Get the ID for the currently authenticated user.
      *
      * @return int
