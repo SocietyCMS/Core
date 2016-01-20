@@ -19,6 +19,10 @@ trait EloquentHashids
      */
     public static function bootEloquentHashids()
     {
+        static::creating(function (Model $model) {
+            $model->{static::getHashidColumn($model)} = uniqid();
+        });
+
         static::created(function (Model $model) {
             $model->{static::getHashidColumn($model)} = (new Hashids(
                 static::getHashidConnection($model),
