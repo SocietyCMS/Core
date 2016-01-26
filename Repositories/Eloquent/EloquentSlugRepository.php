@@ -4,6 +4,8 @@ namespace Modules\Core\Repositories\Eloquent;
 
 use Illuminate\Support\Str;
 use Modules\Core\Repositories\SlugRepository;
+use Prettus\Validator\Contracts\ValidatorInterface;
+use Prettus\Repository\Contracts\RepositoryInterface;
 
 abstract class EloquentSlugRepository extends EloquentBaseRepository implements SlugRepository
 {
@@ -17,6 +19,20 @@ abstract class EloquentSlugRepository extends EloquentBaseRepository implements 
     public function findBySlug($slug)
     {
         return $this->findWhere(['slug' => $slug])->first();
+    }
+
+    /**
+     * Update a entity in repository by id
+     *
+     * @throws ValidatorException
+     * @param array $attributes
+     * @param $id
+     * @return mixed
+     */
+    public function updateBySlug(array $attributes, $slug)
+    {
+        $album = $this->findBySlug($slug);
+        return $this->update($attributes, $album->id);
     }
 
     /**
