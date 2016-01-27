@@ -36,6 +36,20 @@ abstract class EloquentSlugRepository extends EloquentBaseRepository implements 
     }
 
     /**
+     * Update a entity in repository by id
+     *
+     * @throws ValidatorException
+     * @param array $attributes
+     * @param $id
+     * @return mixed
+     */
+    public function deleteBySlug($slug)
+    {
+        $album = $this->findBySlug($slug);
+        return $this->delete($album->id);
+    }
+
+    /**
      * Generate a unique Slug for a given Title.
      *
      * @param string $title
