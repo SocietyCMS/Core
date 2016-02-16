@@ -22,13 +22,7 @@ class SocietyInstalledMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $society_installed = Cache::remember('society_installed', 5, function () {
-            return
-                file_exists(base_path('.env')) &&
-                Schema::hasTable('user__users');
-        });
-
-        if (!$society_installed) {
+        if (!app('society.isInstalled')) {
             throw new \Exception('SocietyCMS is not yet installed');
         }
 

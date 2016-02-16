@@ -63,13 +63,7 @@ class CoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('society.isInstalled', function ($app) {
-            try {
-                $hasTable = Schema::hasTable('setting__settings') && Schema::hasTable('menu_menu') && Schema::hasTable('user__users');
-            } catch (\Exception $e) {
-                $hasTable = false;
-            }
-
-            return $app['files']->isFile(base_path('.env')) && $hasTable;
+            return file_exists(storage_path('installed'));
         });
 
         $this->registerModuleVendorDependencies();
