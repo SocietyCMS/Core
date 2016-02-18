@@ -26,13 +26,23 @@ class PermissionManager
     }
 
     /**
-     * Get the permissions from all the enabled modules.
+     * Get all permissions from all the enabled modules.
      *
      * @return array
      */
     public function all()
     {
         return $this->permissions->orderBy('module')->get()->groupBy('module');
+    }
+
+    /**
+     * Get only the managed permissions from the enabled modules.
+     *
+     * @return array
+     */
+    public function managed()
+    {
+        return $this->permissions->where('name', 'NOT LIKE', '%:unmanaged::%')->orderBy('module')->get()->groupBy('module');
     }
 
 
