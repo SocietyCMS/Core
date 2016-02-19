@@ -45,6 +45,16 @@ class PermissionManager
         return $this->permissions->where('name', 'NOT LIKE', '%:unmanaged::%')->orderBy('module')->get()->groupBy('module');
     }
 
+    /**
+     * Get only the managed permissions from the enabled modules.
+     *
+     * @return array
+     */
+    public function getPermission($name)
+    {
+        return $this->permissions->where('name', $name)->first();
+    }
+
 
     /**
      * @param $module
