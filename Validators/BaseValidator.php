@@ -34,6 +34,8 @@ class BaseValidator extends AbstractValidator {
      */
     public function passes($action = null)
     {
+        $this->data = $this->sanitize($this->data);
+
         $rules     = $this->getRules($action);
         $validator = $this->validator->make($this->data, $rules);
 
@@ -55,6 +57,17 @@ class BaseValidator extends AbstractValidator {
     public function fails($action = null)
     {
         return ! $this->passes($action);
+    }
+
+    /**
+     * Sanitize input with special rules
+     *
+     * @param $request
+     * @return mixed
+     */
+    public function sanitize($request)
+    {
+        return $request;
     }
 
 }
