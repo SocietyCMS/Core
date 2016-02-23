@@ -12,6 +12,7 @@
   "order": 0,
   "providers": [
     "Modules\\Core\\Providers\\CoreServiceProvider",
+    "Modules\\Core\\Utilities\\JavaScript\\JavaScriptServiceProvider",
     "FloatingPoint\\Stylist\\StylistServiceProvider",
     "Laracasts\\Flash\\FlashServiceProvider",
     "Maatwebsite\\Sidebar\\SidebarServiceProvider",
