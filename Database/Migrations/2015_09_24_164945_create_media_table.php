@@ -11,8 +11,8 @@ class CreateMediaTable extends Migration
      */
     public function up()
     {
-        Schema::create('media', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('core__media', function (Blueprint $table) {
+            $table->uuid('id');
             $table->morphs('model');
             $table->string('collection_name');
             $table->string('name');
@@ -31,6 +31,6 @@ class CreateMediaTable extends Migration
      */
     public function down()
     {
-        Schema::drop('media');
+        Schema::drop('core__media');
     }
 }
