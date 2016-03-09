@@ -2,10 +2,8 @@
 namespace Modules\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Utilities\AssetManager\Manager\SocietyAssetManager;
-use Modules\Core\Utilities\AssetManager\Manager\AssetManager;
-use Modules\Core\Utilities\AssetManager\Pipeline\SocietyAssetPipeline;
-use Modules\Core\Utilities\AssetManager\Pipeline\AssetPipeline;
+use Modules\Core\Utilities\AssetManager\JavascriptPipeline\JavascriptPipeline;
+use Modules\Core\Utilities\AssetManager\JavascriptPipeline\SocietyJavascriptPipeline;
 
 class AssetServiceProvider extends ServiceProvider
 {
@@ -23,11 +21,8 @@ class AssetServiceProvider extends ServiceProvider
      */
     private function bindAssetClasses()
     {
-        $this->app->singleton(AssetManager::class, function () {
-            return new SocietyAssetManager();
-        });
-        $this->app->singleton(AssetPipeline::class, function ($app) {
-            return new SocietyAssetPipeline($app[AssetManager::class]);
+        $this->app->singleton(JavascriptPipeline::class, function () {
+            return new SocietyJavascriptPipeline();
         });
     }
 }

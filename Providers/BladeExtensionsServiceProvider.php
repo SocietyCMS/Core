@@ -18,9 +18,7 @@ class BladeExtensionsServiceProvider extends ServiceProvider
     {
         Blade::directive('assetPipeline', function($expression) {
 
-            JavaScript::put([
-                'banane' => 'Apfel'
-            ]);
+
 
             return '<?php echo $__env->yieldContent("styles"); ?>';
         });

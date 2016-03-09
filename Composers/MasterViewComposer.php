@@ -12,14 +12,11 @@ class MasterViewComposer
      */
     private $assetPipeline;
 
-    public function __construct(AssetPipeline $assetPipeline)
+    public function __construct()
     {
-        $this->assetPipeline = $assetPipeline;
     }
 
     public function compose(View $view)
     {
-        $view->with('cssFiles', $this->assetPipeline->allCss());
-        $view->with('jsFiles', $this->assetPipeline->allJs());
     }
 }
