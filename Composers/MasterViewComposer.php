@@ -3,6 +3,7 @@
 namespace Modules\Core\Composers;
 
 use Dingo\Api\Routing\Router;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Translation\Translator;
 use JavaScript;
 use Illuminate\Contracts\View\View;
@@ -51,7 +52,6 @@ class MasterViewComposer
         $this->setJWT($jwtoken);
 
         $this->provideAPIRoutes();
-        $this->provideTranslations();
 
         $output .= $this->setVueResourceHeader($jwtoken);
 
@@ -95,24 +95,26 @@ class MasterViewComposer
      */
     protected function provideAPIRoutes()
     {
-        $router = app(Router::class);
+        $routes = Cache::rememberForever('provideAPIRoutes', function () {
+            $router = app(Router::class);
+            $routes = [];
+            foreach ($router->getRoutes() as $collection) {
+                foreach ($collection->getRoutes() as $route) {
 
-        $routes = [];
-
-        foreach ($router->getRoutes() as $collection) {
-            foreach ($collection->getRoutes() as $route) {
-
-                $temp = &$routes;
-                if ($routeName = $route->getName()) {
-                    foreach (explode('.', $routeName) as $key) {
-                        $temp = &$temp[$key];
+                    $temp = &$routes;
+                    if ($routeName = $route->getName()) {
+                        foreach (explode('.', $routeName) as $key) {
+                            $temp = &$temp[$key];
+                        }
+                        $temp = preg_replace('/{(\w+)}/', ':$1', $route->uri());
                     }
-                    $temp = preg_replace('/{(\w+)}/', ':$1', $route->uri());
                 }
             }
-        }
 
-        JavaScript::put(['api' => $routes['api']]);
+            return $routes['api'];
+        });
+
+        JavaScript::put(['api' => $routes]);
     }
 
 }
