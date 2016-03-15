@@ -13,6 +13,8 @@
   "providers": [
     "Modules\\Core\\Providers\\CoreServiceProvider",
     "Modules\\Core\\Providers\\EventServiceProvider",
+    "Modules\\Core\\Providers\\AssetServiceProvider",
+    "Modules\\Core\\Providers\\BladeExtensionsServiceProvider",
     "Modules\\Core\\Utilities\\JavaScript\\JavaScriptServiceProvider",
     "FloatingPoint\\Stylist\\StylistServiceProvider",
     "Laracasts\\Flash\\FlashServiceProvider",

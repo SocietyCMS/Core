@@ -3,6 +3,7 @@ namespace Modules\Core\Utilities\JavaScript;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Utilities\AssetManager\JavascriptPipeline\JavascriptPipeline;
 
 class JavaScriptServiceProvider extends ServiceProvider
 {
@@ -14,10 +15,8 @@ class JavaScriptServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('JavaScript', function ($app) {
-            $view = config('society.core.utilities.javascript.bind_js_vars_to_this_view');
             $namespace = config('society.core.utilities.javascript.js_namespace');
-            $binder = new LaravelViewBinder($app['events'], $view);
-            return new PHPToJavaScriptTransformer($binder, $namespace);
+            return new PHPToJavaScriptTransformer(app(JavascriptPipeline::class), $namespace);
         });
     }
 

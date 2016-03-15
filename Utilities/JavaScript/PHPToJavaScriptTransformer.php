@@ -1,6 +1,7 @@
 <?php
 namespace Modules\Core\Utilities\JavaScript;
 
+use Modules\Core\Utilities\AssetManager\JavascriptPipeline\JavascriptPipeline;
 use stdClass;
 use Exception;
 use JsonSerializable;
@@ -16,9 +17,9 @@ class PHPToJavaScriptTransformer
     /**
      * What binds the variables to the views.
      *
-     * @var ViewBinder
+     * @var JavascriptPipeline
      */
-    protected $viewBinder;
+    protected $javascriptPipeline;
     /**
      * All transformable types.
      *
@@ -36,12 +37,12 @@ class PHPToJavaScriptTransformer
     /**
      * Create a new JS transformer instance.
      *
-     * @param ViewBinder $viewBinder
+     * @param JavascriptPipeline $javascriptPipeline
      * @param string $namespace
      */
-    function __construct(ViewBinder $viewBinder, $namespace = 'window')
+    function __construct(JavascriptPipeline $javascriptPipeline, $namespace = 'window')
     {
-        $this->viewBinder = $viewBinder;
+        $this->javascriptPipeline = $javascriptPipeline;
         $this->namespace = $namespace;
     }
 
@@ -64,7 +65,7 @@ class PHPToJavaScriptTransformer
         $js = $this->buildJavaScriptSyntax($variables);
         // And then we'll actually bind those
         // variables to the view.
-        $this->viewBinder->bind($js);
+        $this->javascriptPipeline->addJs($js);
         return $js;
     }
 

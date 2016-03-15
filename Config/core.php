@@ -1,6 +1,14 @@
 <?php
 
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Which administration theme to use for the back end interface
+    |--------------------------------------------------------------------------
+    */
+    'frontend-theme' => 'SocietyStarter',
+
     /*
    |--------------------------------------------------------------------------
    | The prefix that'll be used for the administration
