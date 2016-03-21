@@ -46,6 +46,10 @@ trait baseMediaConversions
             ->setManipulations(['w' => 400, 'h' => 400, 'fit' => 'max'])
             ->performOnCollections('images');
 
+        $this->addMediaConversion('originalHiRes')
+            ->setManipulations(['w' => 1920, 'h' => 1080, 'fit' => 'max'])
+            ->performOnCollections('images');
+
         $this->addMediaConversion('cover400')
             ->setManipulations(['w' => 400, 'h' => 400,  'fit' => 'crop'])
             ->performOnCollections('images');
