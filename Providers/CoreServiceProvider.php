@@ -4,9 +4,10 @@ namespace Modules\Core\Providers;
 
 use Config;
 use Illuminate\Routing\Router;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Maatwebsite\Sidebar\SidebarManager;
+use Modules\Core\Console\ApiGenerateKeyCommand;
+use Modules\Core\Console\InstallCommand;
 use Modules\Core\Sidebar\AdminSidebar;
 use Pingpong\Modules\Module;
 use Setting;
@@ -66,7 +67,9 @@ class CoreServiceProvider extends ServiceProvider
             return file_exists(storage_path('installed'));
         });
 
+        $this->registerCommands();
         $this->registerModuleVendorDependencies();
+
     }
 
     /**
@@ -201,6 +204,17 @@ class CoreServiceProvider extends ServiceProvider
                 $filename
             );
         }
+    }
+
+    /**
+     * Register the console commands
+     */
+    private function registerCommands()
+    {
+        $this->commands([
+            ApiGenerateKeyCommand::class,
+            InstallCommand::class,
+        ]);
     }
 
     /**
