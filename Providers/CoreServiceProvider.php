@@ -7,6 +7,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Maatwebsite\Sidebar\SidebarManager;
 use Modules\Core\Console\ApiGenerateKeyCommand;
+use Modules\Core\Console\DemoCommand;
 use Modules\Core\Console\InstallCommand;
 use Modules\Core\Sidebar\AdminSidebar;
 use Pingpong\Modules\Module;
@@ -214,6 +215,7 @@ class CoreServiceProvider extends ServiceProvider
         $this->commands([
             ApiGenerateKeyCommand::class,
             InstallCommand::class,
+            DemoCommand::class,
         ]);
     }
 

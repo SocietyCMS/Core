@@ -15,8 +15,8 @@ class EnvFileWriter
      */
     protected $search = [
         "DB_HOST=localhost",
-        "DB_DATABASE=homestead",
-        "DB_USERNAME=homestead",
+        "DB_DATABASE=societycms",
+        "DB_USERNAME=societycms",
         "DB_PASSWORD=secret",
     ];
 
