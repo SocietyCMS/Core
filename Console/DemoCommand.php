@@ -57,8 +57,8 @@ class DemoCommand extends Command
 
         if ($success) {
             $this->blockMessage(
-                'SocietyCMS is ready',
-                'You can now login with your username and password at /backend',
+                'Demo',
+                'SocietyCMS is now in Demo Mode',
                 'fg=black;bg=green;options=bold'
             );
         }
