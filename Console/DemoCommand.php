@@ -52,6 +52,7 @@ class DemoCommand extends Command
         $this->blockMessage('Demo Mode', 'This will put SocietyCMS in Demo-Mode and populate it with sample data.', 'comment');
 
         $success = $this->demoMode->stack([
+            \Modules\Core\Console\Demo\Scripts\ProtectInstallation::class,
             \Modules\Core\Console\Demo\Scripts\ModuleSeeders::class,
         ])->enable($this);
 
