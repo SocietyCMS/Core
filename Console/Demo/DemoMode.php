@@ -42,6 +42,8 @@ class DemoMode
      */
     public function enable(Command $command)
     {
+        $command->call('down');
+
         foreach ($this->scripts as $script) {
             try {
                 $this->app->make($script)->fire($command);
@@ -52,6 +54,7 @@ class DemoMode
             }
         }
 
+        $command->call('up');
         return true;
     }
 }

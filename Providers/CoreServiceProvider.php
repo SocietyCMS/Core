@@ -3,6 +3,7 @@
 namespace Modules\Core\Providers;
 
 use Config;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Maatwebsite\Sidebar\SidebarManager;

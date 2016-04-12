@@ -3,6 +3,7 @@
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\App;
 use Modules\Core\Console\Installers\SetupScript;
 
 class ProtectInstallation implements SetupScript
@@ -32,7 +33,11 @@ class ProtectInstallation implements SetupScript
             throw new Exception('SocietyCMS is not installed. Please run "php artisan society:install" first.');
         }
 
-        if (!$command->option('force')) {
+        if ($command->option('refresh') && !App::environment('demo')) {
+            throw new Exception('Refresh option is only available in demo mode.');
+        }
+
+        if (!$command->option('force') && !$command->option('refresh')) {
             if (!$command->confirm('Are you sure you want to start Demo Mode?')) {
                 throw new Exception('Demo Mode cancelled');
             }

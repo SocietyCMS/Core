@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Modules\Core\Console\Installers\SetupScript;
 
-class DisableCache implements SetupScript
+class SetDemoEnvironment implements SetupScript
 {
     /**
      * @var Filesystem
@@ -22,6 +22,7 @@ class DisableCache implements SetupScript
      * @var array
      */
     protected $search = [
+        "APP_ENV=local",
         "CACHE_DRIVER=memcached",
     ];
 
@@ -55,6 +56,7 @@ class DisableCache implements SetupScript
         $environmentFile = $this->finder->get($this->file);
 
         $replace = [
+            "APP_ENV=demo",
             "CACHE_DRIVER=array",
         ];
 

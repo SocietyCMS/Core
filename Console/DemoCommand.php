@@ -24,7 +24,7 @@ class DemoCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Enable SocietyCMS Demo-Mode';
+    protected $description = 'Enable SocietyCMS Demo Mode';
     /**
      * @var DemoMode
      */
@@ -53,7 +53,7 @@ class DemoCommand extends Command
 
         $success = $this->demoMode->stack([
             \Modules\Core\Console\Demo\Scripts\ProtectInstallation::class,
-            \Modules\Core\Console\Demo\Scripts\DisableCache::class,
+            \Modules\Core\Console\Demo\Scripts\SetDemoEnvironment::class,
             \Modules\Core\Console\Demo\Scripts\ModuleSeeders::class,
         ])->enable($this);
 
@@ -69,7 +69,8 @@ class DemoCommand extends Command
     protected function getOptions()
     {
         return [
-            ['force', 'f', InputOption::VALUE_NONE, 'Force the installation, even if already installed']
+            ['force', 'f', InputOption::VALUE_NONE, 'Force demo mode, even if already installed'],
+            ['refresh', 'r', InputOption::VALUE_NONE, 'refresh demo mode, if currently enabled']
         ];
     }
 }
