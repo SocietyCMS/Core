@@ -48,7 +48,7 @@ class CoreServiceProvider extends ServiceProvider
     /**
      * Boot the application events.
      *
-     * @return void
+     * @param SidebarManager $manager
      */
     public function boot(SidebarManager $manager)
     {
@@ -69,7 +69,6 @@ class CoreServiceProvider extends ServiceProvider
             return file_exists(base_path('.env'));
         });
 
-        $this->registerCommands();
         $this->registerModuleVendorDependencies();
 
     }
@@ -206,18 +205,6 @@ class CoreServiceProvider extends ServiceProvider
                 $filename
             );
         }
-    }
-
-    /**
-     * Register the console commands
-     */
-    private function registerCommands()
-    {
-        $this->commands([
-            ApiGenerateKeyCommand::class,
-            InstallCommand::class,
-            DemoCommand::class,
-        ]);
     }
 
     /**

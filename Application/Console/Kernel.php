@@ -4,6 +4,9 @@ namespace Modules\Core\Application\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Modules\Core\Console\ApiGenerateKeyCommand;
+use Modules\Core\Console\DemoCommand;
+use Modules\Core\Console\InstallCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,6 +16,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        ApiGenerateKeyCommand::class,
+        InstallCommand::class,
+        DemoCommand::class,
     ];
 
     /**
