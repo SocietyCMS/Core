@@ -44,9 +44,8 @@ class AdminUserInstaller implements SetupScript
             $command->blockMessage('User', 'Creating Admin User...', 'comment');
         }
 
-        $adminRoleId = $this->seedAdminRole();
-
-        $this->createFirstUser($adminRoleId);
+        $this->seedAdminRole();
+        $this->createFirstUser();
     }
 
 
@@ -63,10 +62,18 @@ class AdminUserInstaller implements SetupScript
     }
 
     /**
+     * @return mixed
+     */
+    public function getAdminRole()
+    {
+        return $this->application->make('Modules\User\Repositories\RoleRepository')->skipCache()->findByField('name','admin')->first();
+    }
+
+    /**
      * Create a first admin user
      * @param $adminRoleId
      */
-    protected function createFirstUser($adminRoleId)
+    protected function createFirstUser()
     {
         $info = [
             'first_name' => $this->askForFirstName(),
@@ -79,7 +86,7 @@ class AdminUserInstaller implements SetupScript
 
         $this->application->make('Modules\User\Repositories\UserRepository')->createWithRoles(
             $info,
-            $adminRoleId
+            $this->getAdminRole()
         );
 
         $this->command->info('Admin account created!');

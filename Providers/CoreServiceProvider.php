@@ -66,7 +66,7 @@ class CoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('society.isInstalled', function ($app) {
-            return file_exists(base_path('.env'));
+            return file_exists(base_path('.env')) && file_exists(storage_path('app/installed'));
         });
 
         $this->registerModuleVendorDependencies();

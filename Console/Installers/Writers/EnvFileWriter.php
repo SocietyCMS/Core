@@ -63,4 +63,17 @@ class EnvFileWriter
 
         Dotenv::makeImmutable();
     }
+
+    /**
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    public function reset()
+    {
+        Dotenv::makeMutable();
+
+        $templateFile = $this->finder->get($this->template);
+        $this->finder->put($this->file, $templateFile);
+
+        Dotenv::makeImmutable();
+    }
 }

@@ -58,6 +58,7 @@ class InstallCommand extends Command
         $success = $this->installer->stack([
             \Modules\Core\Console\Installers\Scripts\ProtectInstaller::class,
             \Modules\Core\Console\Installers\Scripts\RequirementsCheck::class,
+            \Modules\Core\Console\Installers\Scripts\ResetEnvironment::class,
             \Modules\Core\Console\Installers\Scripts\ConfigureDatabase::class,
             \Modules\Core\Console\Installers\Scripts\SetAppKey::class,
             \Modules\Core\Console\Installers\Scripts\ModuleMigrator::class,
@@ -66,6 +67,7 @@ class InstallCommand extends Command
             \Modules\Core\Console\Installers\Scripts\ThemeAssets::class,
             \Modules\Core\Console\Installers\Scripts\AdminUserInstaller::class,
             \Modules\Core\Console\Installers\Scripts\UnignoreComposerLock::class,
+            \Modules\Core\Console\Installers\Scripts\SocietyIsInstalled::class,
         ])->install($this);
 
         if ($success) {
