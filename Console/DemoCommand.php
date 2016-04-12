@@ -53,6 +53,7 @@ class DemoCommand extends Command
 
         $success = $this->demoMode->stack([
             \Modules\Core\Console\Demo\Scripts\ProtectInstallation::class,
+            \Modules\Core\Console\Demo\Scripts\DisableCache::class,
             \Modules\Core\Console\Demo\Scripts\ModuleSeeders::class,
         ])->enable($this);
 
