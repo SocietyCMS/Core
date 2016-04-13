@@ -2,10 +2,9 @@
   "name": "societycms/module-core",
   "description": "The SocietyCMS Core module.",
   "keywords": [
-    "cms",
     "societycms"
   ],
-  "license": "AGPL",
+  "license": "MIT",
   "version": "0.0.1",
   "type": "societycms-module",
   "authors": [
