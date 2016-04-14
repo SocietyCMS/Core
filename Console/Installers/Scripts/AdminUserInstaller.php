@@ -43,7 +43,7 @@ class AdminUserInstaller implements SetupScript
         if ($command->option('no-interaction')) {
             return;
         }
-        
+
         $this->command = $command;
 
         if ($command->option('verbose')) {
