@@ -44,10 +44,6 @@ class ConfigureDatabase implements SetupScript
      */
     public function fire(Command $command)
     {
-        if ($command->option('no-interaction')) {
-            return;
-        }
-
         $this->command = $command;
 
         $connected = false;

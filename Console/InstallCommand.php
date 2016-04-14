@@ -84,7 +84,6 @@ class InstallCommand extends Command
     {
         return [
             ['force', 'f', InputOption::VALUE_NONE, 'Force the installation, even if already installed'],
-            ['no-interaction', 'n', InputOption::VALUE_NONE, 'Do not ask any interactive question'],
         ];
     }
 }
