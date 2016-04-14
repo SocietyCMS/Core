@@ -1,9 +1,9 @@
-<?php 
+<?php
+
 namespace Modules\Core\Utilities\AssetManager\JavascriptPipeline;
 
 use Illuminate\Support\Collection;
 use Modules\Core\Utilities\AssetManager\Exceptions\AssetNotFoundException;
-use Modules\Core\Utilities\AssetManager\Manager\AssetManager;
 
 class SocietyJavascriptPipeline implements JavascriptPipeline
 {
@@ -18,10 +18,13 @@ class SocietyJavascriptPipeline implements JavascriptPipeline
     }
 
     /**
-     * Add a javascript dependency on the view
+     * Add a javascript dependency on the view.
+     *
      * @param string $js
-     * @return $this
+     *
      * @throws AssetNotFoundException
+     *
+     * @return $this
      */
     public function addJs($js)
     {
@@ -29,15 +32,18 @@ class SocietyJavascriptPipeline implements JavascriptPipeline
             foreach ($js as $script) {
                 $this->addJs($script);
             }
+
             return $this;
         }
 
         $this->js->push($js);
+
         return $this;
     }
 
     /**
-     * Return all js files to include
+     * Return all js files to include.
+     *
      * @return \Illuminate\Support\Collection
      */
     public function allJs()

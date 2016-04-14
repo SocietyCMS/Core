@@ -1,5 +1,5 @@
 <?php
 
-get('/test', function(){
+get('/test', function () {
 
 });

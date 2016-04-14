@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console\Installers\Scripts;
+<?php
+
+namespace Modules\Core\Console\Installers\Scripts;
 
 use Exception;
 use Illuminate\Console\Command;
@@ -15,6 +17,7 @@ class ResetEnvironment implements SetupScript
 
     /**
      * @param EnvFileWriter $env
+     *
      * @internal param Filesystem $finder
      */
     public function __construct(EnvFileWriter $env)
@@ -23,10 +26,13 @@ class ResetEnvironment implements SetupScript
     }
 
     /**
-     * Fire the install script
-     * @param  Command   $command
-     * @return mixed
+     * Fire the install script.
+     *
+     * @param Command $command
+     *
      * @throws Exception
+     *
+     * @return mixed
      */
     public function fire(Command $command)
     {

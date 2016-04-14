@@ -3,8 +3,7 @@
 namespace Modules\Core\Traits\Testing;
 
 /**
- * Class MigrateSocietyCMSDemo
- * @package Modules\Core\Traits\Testing
+ * Class MigrateSocietyCMSDemo.
  */
 trait MigrateSocietyCMSDemo
 {
@@ -15,7 +14,6 @@ trait MigrateSocietyCMSDemo
     {
         $this->demoSeedCoreModules();
     }
-
 
     /**
      * @var array
@@ -29,9 +27,6 @@ trait MigrateSocietyCMSDemo
         'Dashboard',
     ];
 
-    /**
-     *
-     */
     private function demoSeedCoreModules()
     {
         foreach ($this->modules as $module) {
@@ -50,5 +45,4 @@ trait MigrateSocietyCMSDemo
         }
         $this->artisan('db:seed', ['--class' => $demoSeederClass, '--database' => config('database.default')]);
     }
-
 }

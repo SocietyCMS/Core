@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console\Installers\Scripts;
+<?php
+
+namespace Modules\Core\Console\Installers\Scripts;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Config\Repository as Config;
@@ -34,8 +36,10 @@ class ConfigureDatabase implements SetupScript
     protected $command;
 
     /**
-     * Fire the install script
-     * @param  Command $command
+     * Fire the install script.
+     *
+     * @param Command $command
+     *
      * @return mixed
      */
     public function fire(Command $command)
@@ -44,7 +48,7 @@ class ConfigureDatabase implements SetupScript
 
         $connected = false;
 
-        while (! $connected) {
+        while (!$connected) {
             $host = $this->askDatabaseHost();
 
             $name = $this->askDatabaseName();
@@ -58,7 +62,7 @@ class ConfigureDatabase implements SetupScript
             if ($this->databaseConnectionIsValid()) {
                 $connected = true;
             } else {
-                $command->error("Please ensure your database credentials are valid.");
+                $command->error('Please ensure your database credentials are valid.');
             }
         }
 
@@ -94,6 +98,7 @@ class ConfigureDatabase implements SetupScript
 
     /**
      * @param
+     *
      * @return string
      */
     protected function askDatabaseUsername()
@@ -110,6 +115,7 @@ class ConfigureDatabase implements SetupScript
 
     /**
      * @param
+     *
      * @return string
      */
     protected function askDatabasePassword()
@@ -134,6 +140,7 @@ class ConfigureDatabase implements SetupScript
 
     /**
      * Is the database connection valid?
+     *
      * @return bool
      */
     protected function databaseConnectionIsValid()

@@ -43,7 +43,7 @@ return [
             'societyInstalled',
             'resolveSidebars',
             'verifyCsrfToken',
-            'loggedIn'
+            'loggedIn',
         ],
         'frontend' => [
             'societyInstalled',

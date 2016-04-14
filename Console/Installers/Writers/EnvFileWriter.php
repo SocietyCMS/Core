@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console\Installers\Writers;
+<?php
+
+namespace Modules\Core\Console\Installers\Writers;
 
 use Dotenv;
 use Illuminate\Filesystem\Filesystem;
@@ -14,10 +16,10 @@ class EnvFileWriter
      * @var array
      */
     protected $search = [
-        "DB_HOST=localhost",
-        "DB_DATABASE=societycms",
-        "DB_USERNAME=societycms",
-        "DB_PASSWORD=secret",
+        'DB_HOST=localhost',
+        'DB_DATABASE=societycms',
+        'DB_USERNAME=societycms',
+        'DB_PASSWORD=secret',
     ];
 
     /**
@@ -42,6 +44,7 @@ class EnvFileWriter
      * @param $name
      * @param $username
      * @param $password
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function write($name, $username, $password, $host)

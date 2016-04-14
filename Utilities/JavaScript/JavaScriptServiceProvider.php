@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\Core\Utilities\JavaScript;
 
 use Illuminate\Foundation\AliasLoader;
@@ -16,6 +17,7 @@ class JavaScriptServiceProvider extends ServiceProvider
     {
         $this->app->singleton('JavaScript', function ($app) {
             $namespace = config('society.core.utilities.javascript.js_namespace');
+
             return new PHPToJavaScriptTransformer(app(JavascriptPipeline::class), $namespace);
         });
     }

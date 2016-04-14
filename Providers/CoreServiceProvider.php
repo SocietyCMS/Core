@@ -3,21 +3,15 @@
 namespace Modules\Core\Providers;
 
 use Config;
-use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Maatwebsite\Sidebar\SidebarManager;
-use Modules\Core\Console\ApiGenerateKeyCommand;
-use Modules\Core\Console\DemoCommand;
-use Modules\Core\Console\InstallCommand;
 use Modules\Core\Sidebar\AdminSidebar;
 use Pingpong\Modules\Module;
-use Setting;
 
 /**
- * Class CoreServiceProvider
- * @package Modules\Core\Providers
+ * Class CoreServiceProvider.
  */
 class CoreServiceProvider extends ServiceProvider
 {
@@ -41,8 +35,8 @@ class CoreServiceProvider extends ServiceProvider
     protected $middleware = [
         'Core' => [
             'societyInstalled' => 'SocietyInstalledMiddleware',
-            'resolveSidebars' => 'ResolveSidebars',
-            'verifyCsrfToken' => 'VerifyCsrfToken',
+            'resolveSidebars'  => 'ResolveSidebars',
+            'verifyCsrfToken'  => 'VerifyCsrfToken',
         ],
     ];
 
@@ -132,7 +126,7 @@ class CoreServiceProvider extends ServiceProvider
         }
         $this->app['view']->addNamespace(
             $module->getName(),
-            $module->getPath() . '/Resources/views'
+            $module->getPath().'/Resources/views'
         );
     }
 
@@ -150,7 +144,7 @@ class CoreServiceProvider extends ServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, $moduleName);
         } else {
-            $this->loadTranslationsFrom($module->getPath() . '/Resources/lang', $moduleName);
+            $this->loadTranslationsFrom($module->getPath().'/Resources/lang', $moduleName);
         }
     }
 
@@ -161,7 +155,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function registerConfigNamespace(Module $module)
     {
-        $files = $this->app['files']->files($module->getPath() . '/Config');
+        $files = $this->app['files']->files($module->getPath().'/Config');
 
         $package = $module->getName();
 
@@ -185,7 +179,7 @@ class CoreServiceProvider extends ServiceProvider
     {
         $name = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($file));
 
-        $filename = $this->prefix . '.' . $package . '.' . $name;
+        $filename = $this->prefix.'.'.$package.'.'.$name;
 
         return $filename;
     }
@@ -197,7 +191,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function registerVendorConfig(Module $module)
     {
-        $files = $this->app['files']->files($module->getPath() . '/Config/Vendor');
+        $files = $this->app['files']->files($module->getPath().'/Config/Vendor');
 
         foreach ($files as $file) {
             $filename = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($file));

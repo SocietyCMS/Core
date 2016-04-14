@@ -1,23 +1,24 @@
-<?php namespace Modules\Core\Validators;
+<?php
+
+namespace Modules\Core\Validators;
 
 use Illuminate\Validation\Factory;
 use Prettus\Validator\AbstractValidator;
 
 /**
- * Class LaravelValidator
- * @package Prettus\Validator
+ * Class LaravelValidator.
  */
-class BaseValidator extends AbstractValidator {
-
+class BaseValidator extends AbstractValidator
+{
     /**
-     * Validator
+     * Validator.
      *
      * @var \Illuminate\Validation\Factory
      */
     protected $validator;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param \Illuminate\Validation\Factory $validator
      */
@@ -27,21 +28,22 @@ class BaseValidator extends AbstractValidator {
     }
 
     /**
-     * Pass the data and the rules to the validator
+     * Pass the data and the rules to the validator.
      *
      * @param string $action
+     *
      * @return bool
      */
     public function passes($action = null)
     {
         $this->data = $this->sanitize($this->data);
 
-        $rules     = $this->getRules($action);
+        $rules = $this->getRules($action);
         $validator = $this->validator->make($this->data, $rules);
 
-        if( $validator->fails() )
-        {
+        if ($validator->fails()) {
             $this->errors = $validator->messages();
+
             return false;
         }
 
@@ -49,25 +51,26 @@ class BaseValidator extends AbstractValidator {
     }
 
     /**
-     * Check if the validation fails
+     * Check if the validation fails.
      *
      * @param string $action
+     *
      * @return bool
      */
     public function fails($action = null)
     {
-        return ! $this->passes($action);
+        return !$this->passes($action);
     }
 
     /**
-     * Sanitize input with special rules
+     * Sanitize input with special rules.
      *
      * @param $request
+     *
      * @return mixed
      */
     public function sanitize($request)
     {
         return $request;
     }
-
 }

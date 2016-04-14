@@ -3,12 +3,10 @@
 namespace Modules\Core\Providers;
 
 use Blade;
-use JavaScript;
 use Illuminate\Support\ServiceProvider;
 
 class BladeExtensionsServiceProvider extends ServiceProvider
 {
-
     /**
      * Perform post-registration booting of services.
      *
@@ -16,9 +14,7 @@ class BladeExtensionsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::directive('assetPipeline', function($expression) {
-
-
+        Blade::directive('assetPipeline', function ($expression) {
 
             return '<?php echo $__env->yieldContent("styles"); ?>';
         });

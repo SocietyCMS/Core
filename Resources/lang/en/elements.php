@@ -2,14 +2,14 @@
 
 return [
     'button' => [
-        'edit'            => 'Edit',
-        'cancel'          => 'Cancel',
-        'create'          => 'Create',
-        'update'          => 'Update',
-        'delete'          => 'Delete',
-        'reset'           => 'Reset',
-        'update and back' => 'Update and go back',
-        'optional details'=> 'Optional Details'
+        'edit'             => 'Edit',
+        'cancel'           => 'Cancel',
+        'create'           => 'Create',
+        'update'           => 'Update',
+        'delete'           => 'Delete',
+        'reset'            => 'Reset',
+        'update and back'  => 'Update and go back',
+        'optional details' => 'Optional Details',
     ],
     'state' => [
         'enabled'   => 'Enabled',
@@ -23,7 +23,7 @@ return [
     'change state' => [
         'enable'  => 'Enable',
         'disable' => 'Disable',
-        'publish' => 'Publish'
+        'publish' => 'Publish',
     ],
     'action' => [
         'add resource'    => 'Add :name',

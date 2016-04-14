@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 trait useFactories
 {
-    function factory()
+    public function factory()
     {
         $faker = app(FakerGenerator::class);
         $factory = EloquentFactory::construct($faker);
@@ -25,7 +25,5 @@ trait useFactories
         } else {
             return $factory->of($arguments[0]);
         }
-
     }
-
 }

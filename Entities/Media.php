@@ -1,10 +1,12 @@
-<?php namespace Modules\Core\Entities;
+<?php
 
-use Spatie\MediaLibrary\Media as SpatieMedia;
+namespace Modules\Core\Entities;
+
 use Modules\Core\Traits\Entities\EloquentUuid;
+use Spatie\MediaLibrary\Media as SpatieMedia;
 
-class Media extends SpatieMedia {
-
+class Media extends SpatieMedia
+{
     use EloquentUuid;
     /**
      * The table associated with the model.
@@ -12,5 +14,4 @@ class Media extends SpatieMedia {
      * @var string
      */
     protected $table = 'core__media';
-
 }

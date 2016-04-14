@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console\Demo\Scripts;
+<?php
+
+namespace Modules\Core\Console\Demo\Scripts;
 
 use Exception;
 use Illuminate\Console\Command;
@@ -22,10 +24,13 @@ class ProtectInstallation implements SetupScript
     }
 
     /**
-     * Fire the install script
-     * @param  Command   $command
-     * @return mixed
+     * Fire the install script.
+     *
+     * @param Command $command
+     *
      * @throws Exception
+     *
+     * @return mixed
      */
     public function fire(Command $command)
     {

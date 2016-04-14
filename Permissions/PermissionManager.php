@@ -6,8 +6,7 @@ use Illuminate\Contracts\Container\Container;
 use Modules\User\Entities\Entrust\EloquentPermission;
 
 /**
- * Class PermissionManager
- * @package Modules\Core\Permissions
+ * Class PermissionManager.
  */
 class PermissionManager
 {
@@ -16,13 +15,11 @@ class PermissionManager
      */
     private $module;
 
-    /**
-     */
     public function __construct()
     {
         $this->container = app(Container::class);
         $this->module = app('modules');
-        $this->permissions = new EloquentPermission;
+        $this->permissions = new EloquentPermission();
     }
 
     /**
@@ -55,15 +52,15 @@ class PermissionManager
         return $this->permissions->where('name', $name)->first();
     }
 
-
     /**
      * @param $module
+     *
      * @return bool
      */
     public function registerDefault($module)
     {
         $name = studly_case($module->getName());
-        $class = 'Modules\\' . $name . '\\Installer\\RegisterDefaultPermissions';
+        $class = 'Modules\\'.$name.'\\Installer\\RegisterDefaultPermissions';
 
         if (!class_exists($class)) {
             return false;
@@ -83,6 +80,7 @@ class PermissionManager
                 $module->getLowerName()
             );
         }
+
         return true;
     }
 
@@ -104,16 +102,15 @@ class PermissionManager
     public function rollbackDefault($module)
     {
         $name = studly_case($module->getName());
-        $class = 'Modules\\' . $name . '\\Installer\\RegisterDefaultPermissions';
+        $class = 'Modules\\'.$name.'\\Installer\\RegisterDefaultPermissions';
 
         if (class_exists($class)) {
             $registerDefaultPermissions = $this->container->make($class);
 
-            if(property_exists($registerDefaultPermissions, 'defaultPermissions')) {
+            if (property_exists($registerDefaultPermissions, 'defaultPermissions')) {
                 $permission = EloquentPermission::whereIn('name', array_keys($registerDefaultPermissions->defaultPermissions));
                 $permission->delete();
             }
-
         }
     }
 }

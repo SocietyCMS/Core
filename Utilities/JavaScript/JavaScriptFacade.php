@@ -1,6 +1,7 @@
 <?php
 
 namespace Modules\Core\Utilities\JavaScript;
+
 use Illuminate\Support\Facades\Facade;
 
 class JavaScriptFacade extends Facade

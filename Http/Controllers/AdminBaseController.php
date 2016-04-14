@@ -12,7 +12,6 @@ class AdminBaseController extends Controller
 {
     use ValidatesRequests;
 
-
     /**
      * @var \Illuminate\Foundation\Application|mixed
      */

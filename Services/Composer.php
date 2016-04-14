@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Services;
+<?php
+
+namespace Modules\Core\Services;
 
 use Symfony\Component\Process\Process;
 
@@ -11,15 +13,16 @@ class Composer extends \Illuminate\Foundation\Composer
      * Enable real time output of all commands.
      *
      * @param $command
+     *
      * @return void
      */
     public function enableOutput($command)
     {
         $this->output = function ($type, $buffer) use ($command) {
             if (Process::ERR === $type) {
-                $command->info(trim('[ERR] > ' . $buffer));
+                $command->info(trim('[ERR] > '.$buffer));
             } else {
-                $command->info(trim('> ' . $buffer));
+                $command->info(trim('> '.$buffer));
             }
         };
     }
@@ -37,32 +40,34 @@ class Composer extends \Illuminate\Foundation\Composer
     /**
      * Update all composer packages.
      *
-     * @param  string $package
+     * @param string $package
+     *
      * @return void
      */
     public function update($package = null)
     {
         if (!is_null($package)) {
-            $package = '"' . $package . '"';
+            $package = '"'.$package.'"';
         }
         $process = $this->getProcess();
-        $process->setCommandLine(trim($this->findComposer() . ' update ' . $package));
+        $process->setCommandLine(trim($this->findComposer().' update '.$package));
         $process->run($this->output);
     }
 
     /**
      * Require a new composer package.
      *
-     * @param  string $package
+     * @param string $package
+     *
      * @return void
      */
     public function install($package)
     {
         if (!is_null($package)) {
-            $package = '"' . $package . '"';
+            $package = '"'.$package.'"';
         }
         $process = $this->getProcess();
-        $process->setCommandLine(trim($this->findComposer() . ' require ' . $package));
+        $process->setCommandLine(trim($this->findComposer().' require '.$package));
         $process->run($this->output);
     }
 
@@ -72,17 +77,17 @@ class Composer extends \Illuminate\Foundation\Composer
     public function dumpAutoload()
     {
         $process = $this->getProcess();
-        $process->setCommandLine(trim($this->findComposer() . ' dump-autoload -o'));
+        $process->setCommandLine(trim($this->findComposer().' dump-autoload -o'));
         $process->run($this->output);
     }
 
     public function remove($package)
     {
         if (!is_null($package)) {
-            $package = '"' . $package . '"';
+            $package = '"'.$package.'"';
         }
         $process = $this->getProcess();
-        $process->setCommandLine(trim($this->findComposer() . ' remove ' . $package));
+        $process->setCommandLine(trim($this->findComposer().' remove '.$package));
         $process->run($this->output);
     }
 }

@@ -1,10 +1,11 @@
 <?php
+
 namespace Modules\Core\Utilities\JavaScript;
 
-use Modules\Core\Utilities\AssetManager\JavascriptPipeline\JavascriptPipeline;
-use stdClass;
 use Exception;
 use JsonSerializable;
+use Modules\Core\Utilities\AssetManager\JavascriptPipeline\JavascriptPipeline;
+use stdClass;
 
 class PHPToJavaScriptTransformer
 {
@@ -38,9 +39,9 @@ class PHPToJavaScriptTransformer
      * Create a new JS transformer instance.
      *
      * @param JavascriptPipeline $javascriptPipeline
-     * @param string $namespace
+     * @param string             $namespace
      */
-    function __construct(JavascriptPipeline $javascriptPipeline, $namespace = 'window')
+    public function __construct(JavascriptPipeline $javascriptPipeline, $namespace = 'window')
     {
         $this->javascriptPipeline = $javascriptPipeline;
         $this->namespace = $namespace;
@@ -48,7 +49,6 @@ class PHPToJavaScriptTransformer
 
     /**
      * Bind the given array of variables to the view.
-     *
      */
     public function put()
     {
@@ -66,6 +66,7 @@ class PHPToJavaScriptTransformer
         // And then we'll actually bind those
         // variables to the view.
         $this->javascriptPipeline->addJs($js);
+
         return $js;
     }
 
@@ -73,7 +74,8 @@ class PHPToJavaScriptTransformer
      * Translate the array of PHP vars to
      * the expected JavaScript syntax.
      *
-     * @param  array $vars
+     * @param array $vars
+     *
      * @return array
      */
     public function buildJavaScriptSyntax(array $vars)
@@ -82,6 +84,7 @@ class PHPToJavaScriptTransformer
         foreach ($vars as $key => $value) {
             $js .= $this->buildVariableInitialization($key, $value);
         }
+
         return $js;
     }
 
@@ -95,14 +98,16 @@ class PHPToJavaScriptTransformer
         if ($this->namespace == 'window') {
             return '';
         }
+
         return "window.{$this->namespace} = window.{$this->namespace} || {};";
     }
 
     /**
      * Translate a single PHP var to JS.
      *
-     * @param  string $key
-     * @param  string $value
+     * @param string $key
+     * @param string $value
+     *
      * @return string
      */
     protected function buildVariableInitialization($key, $value)
@@ -113,8 +118,10 @@ class PHPToJavaScriptTransformer
     /**
      * Format a value for JavaScript.
      *
-     * @param  string $value
+     * @param string $value
+     *
      * @throws Exception
+     *
      * @return string
      */
     protected function optimizeValueForJavaScript($value)
@@ -123,7 +130,7 @@ class PHPToJavaScriptTransformer
         // it needs to be transformed for JS-use.
         foreach ($this->types as $transformer) {
             $js = $this->{"transform{$transformer}"}($value);
-            if (! is_null($js)) {
+            if (!is_null($js)) {
                 return $js;
             }
         }
@@ -132,7 +139,8 @@ class PHPToJavaScriptTransformer
     /**
      * Transform a string.
      *
-     * @param  string $value
+     * @param string $value
+     *
      * @return string
      */
     protected function transformString($value)
@@ -145,7 +153,8 @@ class PHPToJavaScriptTransformer
     /**
      * Transform an array.
      *
-     * @param  array $value
+     * @param array $value
+     *
      * @return string
      */
     protected function transformArray($value)
@@ -158,7 +167,8 @@ class PHPToJavaScriptTransformer
     /**
      * Transform a numeric value.
      *
-     * @param  mixed $value
+     * @param mixed $value
+     *
      * @return mixed
      */
     protected function transformNumeric($value)
@@ -171,7 +181,8 @@ class PHPToJavaScriptTransformer
     /**
      * Transform a boolean.
      *
-     * @param  boolean $value
+     * @param bool $value
+     *
      * @return string
      */
     protected function transformBoolean($value)
@@ -182,13 +193,15 @@ class PHPToJavaScriptTransformer
     }
 
     /**
-     * @param  object $value
-     * @return string
+     * @param object $value
+     *
      * @throws Exception
+     *
+     * @return string
      */
     protected function transformObject($value)
     {
-        if (! is_object($value)) {
+        if (!is_object($value)) {
             return;
         }
         if ($value instanceof JsonSerializable || $value instanceof StdClass) {
@@ -201,16 +214,18 @@ class PHPToJavaScriptTransformer
         }
         // Otherwise, if the object doesn't even have a
         // __toString() method, we can't proceed.
-        if (! method_exists($value, '__toString')) {
+        if (!method_exists($value, '__toString')) {
             throw new Exception('Cannot transform this object to JavaScript.');
         }
+
         return "'{$value}'";
     }
 
     /**
-     * Transform "null."
+     * Transform "null.".
      *
-     * @param  mixed $value
+     * @param mixed $value
+     *
      * @return string
      */
     protected function transformNull($value)
@@ -223,11 +238,12 @@ class PHPToJavaScriptTransformer
     /**
      * Escape any single quotes.
      *
-     * @param  string $value
+     * @param string $value
+     *
      * @return string
      */
     protected function escape($value)
     {
-        return str_replace(["\\", "'"], ["\\\\", "\'"], $value);
+        return str_replace(['\\', "'"], ['\\\\', "\'"], $value);
     }
 }

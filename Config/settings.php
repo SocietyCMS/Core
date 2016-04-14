@@ -13,10 +13,10 @@ return [
             'view'  => 'textarea',
         ],
         'mail-from' => [
-            'title'   => 'core::settings.website.mail-from.title',
-            'description' =>'core::settings.website.mail-from.description',
-            'view'    => 'text',
-            'default' => 'mail@societycms.com',
+            'title'       => 'core::settings.website.mail-from.title',
+            'description' => 'core::settings.website.mail-from.description',
+            'view'        => 'text',
+            'default'     => 'mail@societycms.com',
         ],
     ],
 

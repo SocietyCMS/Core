@@ -96,6 +96,7 @@ interface Authentication
      * Handle an authentication attempt.
      *
      * @param $credentials
+     *
      * @return mixed
      */
     public function attempt($credentials);

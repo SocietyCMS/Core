@@ -29,5 +29,5 @@ return [
     /*
      * This is the Media model
      */
-    'media_model' => 'Modules\Core\Entities\Media'
+    'media_model' => 'Modules\Core\Entities\Media',
 ];

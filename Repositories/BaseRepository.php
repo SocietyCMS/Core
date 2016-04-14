@@ -9,11 +9,11 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface BaseRepository extends RepositoryInterface
 {
-
     /**
      * Find data by multiple fields or create if not exists.
      *
      * @param array $where
+     *
      * @return mixed
      */
     public function firstOrCreate(array $where);
@@ -23,6 +23,7 @@ interface BaseRepository extends RepositoryInterface
      *
      * @param array $where
      * @param array $attributes
+     *
      * @return mixed
      */
     public function createOrUpdate(array $where, array $attributes);

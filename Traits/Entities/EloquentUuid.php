@@ -6,12 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
 /**
- * Class EloquentUuid
- * @package Modules\Core\Traits\Entities
+ * Class EloquentUuid.
  */
 trait EloquentUuid
 {
-
     /**
      * Boot EloquentUuid trait for the model.
      *
@@ -21,7 +19,7 @@ trait EloquentUuid
     {
         static::creating(function ($model) {
             $model->incrementing = false;
-            $model->{$model->getKeyName()} = (string)Uuid::uuid4();
+            $model->{$model->getKeyName()} = (string) Uuid::uuid4();
         });
     }
 }
