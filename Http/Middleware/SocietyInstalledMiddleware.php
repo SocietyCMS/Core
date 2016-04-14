@@ -4,9 +4,6 @@ namespace Modules\Core\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Schema;
 
 class SocietyInstalledMiddleware
 {

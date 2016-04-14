@@ -2,8 +2,8 @@
 
 namespace Modules\Core\Console;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 
 class ApiGenerateKeyCommand extends Command
@@ -51,7 +51,8 @@ class ApiGenerateKeyCommand extends Command
     /**
      * Generate a random key for the application.
      *
-     * @param  string  $cipher
+     * @param string $cipher
+     *
      * @return string
      */
     protected function getRandomKey($cipher)

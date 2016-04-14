@@ -7,13 +7,14 @@ use Modules\Core\Repositories\HashidsRepository;
 abstract class EloquentHashidsRepository extends EloquentBaseRepository implements HashidsRepository
 {
     /**
-     * Find data by id
+     * Find data by id.
      *
      * @param       $id
      * @param array $columns
+     *
      * @return mixed
      */
-    public function findByUid($id, $columns = array('*'))
+    public function findByUid($id, $columns = ['*'])
     {
         $this->applyCriteria();
         $this->applyScope();

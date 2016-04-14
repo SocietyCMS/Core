@@ -1,14 +1,14 @@
-<?php namespace Modules\Core\Console\Installers\Scripts;
+<?php
+
+namespace Modules\Core\Console\Installers\Scripts;
 
 use Exception;
 use Illuminate\Console\Command;
-use Illuminate\Filesystem\Filesystem;
 use Modules\Core\Console\Installers\SetupScript;
 use Symfony\Component\Console\Helper\Table;
 
 class RequirementsCheck implements SetupScript
 {
-
     private $command;
     private $hasErrors;
     private $requirements;
@@ -17,20 +17,22 @@ class RequirementsCheck implements SetupScript
      * @var array
      */
     protected $requiredExtensions = [
-        'openssl' => 'OpenSSL PHP Extension',
-        'pdo' => 'PDO PHP Extension',
-        'mbstring' => 'Mbstring PHP Extension',
+        'openssl'   => 'OpenSSL PHP Extension',
+        'pdo'       => 'PDO PHP Extension',
+        'mbstring'  => 'Mbstring PHP Extension',
         'tokenizer' => 'Tokenizer PHP Extension',
-        'mcrypt' => 'Mcrypt PHP Extension',
-        'gd' => 'GD PHP Library',
+        'mcrypt'    => 'Mcrypt PHP Extension',
+        'gd'        => 'GD PHP Library',
     ];
 
-
     /**
-     * Fire the install script
-     * @param  Command $command
-     * @return mixed
+     * Fire the install script.
+     *
+     * @param Command $command
+     *
      * @throws Exception
+     *
+     * @return mixed
      */
     public function fire(Command $command)
     {
@@ -49,7 +51,7 @@ class RequirementsCheck implements SetupScript
     private function checkPHPVersion()
     {
         if (version_compare(PHP_VERSION, '5.5.9') >= 0) {
-            return $this->requirements[] = ['PHP 5.5.9 or higher', true];;
+            return $this->requirements[] = ['PHP 5.5.9 or higher', true];
         }
 
         $this->requirements[] = ['PHP 5.5.9 or higher', false];

@@ -1,4 +1,5 @@
 <?php
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +56,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Modules\User\Entities\Entrust\EloquentUser::class,
+            'model'  => Modules\User\Entities\Entrust\EloquentUser::class,
         ],
         // 'users' => [
         //     'driver' => 'database',

@@ -6,12 +6,10 @@ use Hashids\Hashids;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class EloquentHashids
- * @package Modules\Core\Traits\Entities
+ * Class EloquentHashids.
  */
 trait EloquentHashids
 {
-
     /**
      * Boot Eloquent Hashids trait for the model.
      *
@@ -34,6 +32,7 @@ trait EloquentHashids
 
     /**
      * @param Model $model
+     *
      * @return string
      */
     public static function getHashidConnection(Model $model)
@@ -43,6 +42,7 @@ trait EloquentHashids
 
     /**
      * @param Model $model
+     *
      * @return string
      */
     public static function getHashidLength(Model $model)
@@ -52,6 +52,7 @@ trait EloquentHashids
 
     /**
      * @param Model $model
+     *
      * @return string
      */
     public static function getHashidColumn(Model $model)
@@ -61,6 +62,7 @@ trait EloquentHashids
 
     /**
      * @param Model $model
+     *
      * @return mixed
      */
     public static function getHashidEncodingValue(Model $model)

@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console\Installers\Scripts;
+<?php
+
+namespace Modules\Core\Console\Installers\Scripts;
 
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -6,8 +8,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Modules\Core\Console\Installers\SetupScript;
 
 /**
- * Class AdminUserInstaller
- * @package Modules\Core\Console\Installers\Scripts
+ * Class AdminUserInstaller.
  */
 class AdminUserInstaller implements SetupScript
 {
@@ -21,9 +22,8 @@ class AdminUserInstaller implements SetupScript
      */
     protected $application;
 
-
     /**
-     * @param Application    $application
+     * @param Application $application
      */
     public function __construct(Application $application)
     {
@@ -32,8 +32,10 @@ class AdminUserInstaller implements SetupScript
     }
 
     /**
-     * Fire the install script
-     * @param  Command $command
+     * Fire the install script.
+     *
+     * @param Command $command
+     *
      * @return mixed
      */
     public function fire(Command $command)
@@ -47,7 +49,6 @@ class AdminUserInstaller implements SetupScript
         $this->seedAdminRole();
         $this->createFirstUser();
     }
-
 
     /**
      * @return mixed
@@ -66,11 +67,12 @@ class AdminUserInstaller implements SetupScript
      */
     public function getAdminRole()
     {
-        return $this->application->make('Modules\User\Repositories\RoleRepository')->skipCache()->findByField('name','admin')->first();
+        return $this->application->make('Modules\User\Repositories\RoleRepository')->skipCache()->findByField('name', 'admin')->first();
     }
 
     /**
-     * Create a first admin user
+     * Create a first admin user.
+     *
      * @param $adminRoleId
      */
     protected function createFirstUser()
@@ -102,7 +104,7 @@ class AdminUserInstaller implements SetupScript
             if ($firstname == '') {
                 $this->command->error('First name is required');
             }
-        } while (! $firstname);
+        } while (!$firstname);
 
         return $firstname;
     }
@@ -117,7 +119,7 @@ class AdminUserInstaller implements SetupScript
             if ($lastname == '') {
                 $this->command->error('Last name is required');
             }
-        } while (! $lastname);
+        } while (!$lastname);
 
         return $lastname;
     }
@@ -132,7 +134,7 @@ class AdminUserInstaller implements SetupScript
             if ($email == '') {
                 $this->command->error('Email is required');
             }
-        } while (! $email);
+        } while (!$email);
 
         return $email;
     }
@@ -163,7 +165,7 @@ class AdminUserInstaller implements SetupScript
             if ($password == '') {
                 $this->command->error('Password is required');
             }
-        } while (! $password);
+        } while (!$password);
 
         return $password;
     }
@@ -178,7 +180,7 @@ class AdminUserInstaller implements SetupScript
             if ($passwordConfirmation == '') {
                 $this->command->error('Password confirmation is required');
             }
-        } while (! $passwordConfirmation);
+        } while (!$passwordConfirmation);
 
         return $passwordConfirmation;
     }

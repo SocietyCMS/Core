@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console\Demo;
+<?php
+
+namespace Modules\Core\Console\Demo;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
@@ -25,7 +27,8 @@ class DemoMode
     }
 
     /**
-     * @param  array $scripts
+     * @param array $scripts
+     *
      * @return $this
      */
     public function stack(array $scripts)
@@ -36,8 +39,10 @@ class DemoMode
     }
 
     /**
-     * Fire demo scripts
-     * @param  Command $command
+     * Fire demo scripts.
+     *
+     * @param Command $command
+     *
      * @return bool
      */
     public function enable(Command $command)
@@ -55,6 +60,7 @@ class DemoMode
         }
 
         $command->call('up');
+
         return true;
     }
 }

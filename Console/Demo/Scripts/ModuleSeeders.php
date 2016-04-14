@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console\Demo\Scripts;
+<?php
+
+namespace Modules\Core\Console\Demo\Scripts;
 
 use Illuminate\Console\Command;
 use Modules\Core\Console\Installers\SetupScript;
@@ -18,8 +20,10 @@ class ModuleSeeders implements SetupScript
     ];
 
     /**
-     * Fire the install script
-     * @param  Command $command
+     * Fire the install script.
+     *
+     * @param Command $command
+     *
      * @return mixed
      */
     public function fire(Command $command)
@@ -47,7 +51,7 @@ class ModuleSeeders implements SetupScript
         foreach (app('modules')->enabled() as $module) {
             $name = studly_case($module->getName());
 
-            if(! in_array($name, $this->modules)) {
+            if (!in_array($name, $this->modules)) {
                 $this->runDemoSeed($command, $name);
             }
         }

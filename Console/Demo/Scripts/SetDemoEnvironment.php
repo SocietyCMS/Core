@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console\Demo\Scripts;
+<?php
+
+namespace Modules\Core\Console\Demo\Scripts;
 
 use Dotenv;
 use Exception;
@@ -12,7 +14,7 @@ class SetDemoEnvironment implements SetupScript
      * @var Filesystem
      */
     private $finder;
-    
+
     /**
      * @var string
      */
@@ -22,10 +24,9 @@ class SetDemoEnvironment implements SetupScript
      * @var array
      */
     protected $search = [
-        "APP_ENV=local",
-        "CACHE_DRIVER=memcached",
+        'APP_ENV=local',
+        'CACHE_DRIVER=memcached',
     ];
-
 
     /**
      * @param Filesystem $finder
@@ -36,10 +37,13 @@ class SetDemoEnvironment implements SetupScript
     }
 
     /**
-     * Fire the install script
-     * @param  Command   $command
-     * @return mixed
+     * Fire the install script.
+     *
+     * @param Command $command
+     *
      * @throws Exception
+     *
+     * @return mixed
      */
     public function fire(Command $command)
     {
@@ -56,8 +60,8 @@ class SetDemoEnvironment implements SetupScript
         $environmentFile = $this->finder->get($this->file);
 
         $replace = [
-            "APP_ENV=demo",
-            "CACHE_DRIVER=array",
+            'APP_ENV=demo',
+            'CACHE_DRIVER=array',
         ];
 
         $newEnvironmentFile = str_replace($this->search, $replace, $environmentFile);

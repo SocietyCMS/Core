@@ -3,10 +3,9 @@
 namespace Modules\Core\Composers;
 
 use Dingo\Api\Routing\Router;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Translation\Translator;
-use JavaScript;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Cache;
+use JavaScript;
 use Modules\Core\Contracts\Authentication;
 use Modules\Core\Utilities\AssetManager\JavascriptPipeline\JavascriptPipeline;
 
@@ -24,8 +23,9 @@ class MasterViewComposer
 
     /**
      * MasterViewComposer constructor.
+     *
      * @param JavascriptPipeline $javascriptPipeline
-     * @param Authentication $auth
+     * @param Authentication     $auth
      */
     public function __construct(JavascriptPipeline $javascriptPipeline, Authentication $auth)
     {
@@ -58,22 +58,23 @@ class MasterViewComposer
         foreach ($this->javascriptPipeline->allJs() as $js) {
             $output .= $js;
         }
+
         return $output;
     }
 
     /**
-     * Get the JWT for the current user
+     * Get the JWT for the current user.
      */
     protected function getJWT()
     {
         if ($user = $this->auth->check()) {
             return \JWTAuth::fromUser($user);
         }
-        return null;
     }
 
     /**
-     * Send the jwt to the JavaScript Pipeline
+     * Send the jwt to the JavaScript Pipeline.
+     *
      * @param $jwtoken
      */
     protected function setJWT($jwtoken)
@@ -83,6 +84,7 @@ class MasterViewComposer
 
     /**
      * @param $jwtoken
+     *
      * @return string
      */
     protected function setVueResourceHeader($jwtoken)
@@ -100,7 +102,6 @@ class MasterViewComposer
             $routes = [];
             foreach ($router->getRoutes() as $collection) {
                 foreach ($collection->getRoutes() as $route) {
-
                     $temp = &$routes;
                     if ($routeName = $route->getName()) {
                         foreach (explode('.', $routeName) as $key) {
@@ -116,5 +117,4 @@ class MasterViewComposer
 
         JavaScript::put(['api' => $routes]);
     }
-
 }

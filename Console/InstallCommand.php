@@ -35,6 +35,7 @@ class InstallCommand extends Command
      * Create a new command instance.
      *
      * @param Installer $installer
+     *
      * @internal param Filesystem $finder
      * @internal param Application $app
      * @internal param Composer $composer
@@ -47,7 +48,7 @@ class InstallCommand extends Command
     }
 
     /**
-     * Execute the actions
+     * Execute the actions.
      *
      * @return mixed
      */
@@ -82,7 +83,7 @@ class InstallCommand extends Command
     protected function getOptions()
     {
         return [
-            ['force', 'f', InputOption::VALUE_NONE, 'Force the installation, even if already installed']
+            ['force', 'f', InputOption::VALUE_NONE, 'Force the installation, even if already installed'],
         ];
     }
 }

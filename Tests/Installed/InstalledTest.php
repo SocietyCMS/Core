@@ -3,11 +3,9 @@
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Modules\Core\Traits\Testing\DatabaseMigrations;
-use Modules\Modules\Manager\ModuleManager;
 
 class InstalledTest extends TestCase
 {
-
     use DatabaseMigrations, DatabaseTransactions, WithoutMiddleware;
 
     /**

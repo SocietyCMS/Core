@@ -19,8 +19,8 @@ abstract class EloquentBaseRepository extends BaseRepository implements Cacheabl
      * Find data by multiple fields or create if not exists.
      *
      * @param array $where
-     * @return mixed
      *
+     * @return mixed
      */
     public function firstOrCreate(array $where)
     {
@@ -39,6 +39,7 @@ abstract class EloquentBaseRepository extends BaseRepository implements Cacheabl
      *
      * @param array $where
      * @param array $attributes
+     *
      * @return mixed
      */
     public function createOrUpdate(array $where, array $attributes)

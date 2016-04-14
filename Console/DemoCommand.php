@@ -30,9 +30,9 @@ class DemoCommand extends Command
      */
     private $demoMode;
 
-
     /**
      * Create a new command instance.
+     *
      * @param DemoMode $demoMode
      */
     public function __construct(DemoMode $demoMode)
@@ -43,7 +43,7 @@ class DemoCommand extends Command
     }
 
     /**
-     * Execute the actions
+     * Execute the actions.
      *
      * @return mixed
      */
@@ -70,7 +70,7 @@ class DemoCommand extends Command
     {
         return [
             ['force', 'f', InputOption::VALUE_NONE, 'Force demo mode, even if already installed'],
-            ['refresh', 'r', InputOption::VALUE_NONE, 'refresh demo mode, if currently enabled']
+            ['refresh', 'r', InputOption::VALUE_NONE, 'refresh demo mode, if currently enabled'],
         ];
     }
 }
