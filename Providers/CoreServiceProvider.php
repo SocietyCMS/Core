@@ -5,6 +5,7 @@ namespace Modules\Core\Providers;
 use Config;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Maatwebsite\Sidebar\SidebarManager;
 use Modules\Core\Console\ApiGenerateKeyCommand;
@@ -40,8 +41,8 @@ class CoreServiceProvider extends ServiceProvider
     protected $middleware = [
         'Core' => [
             'societyInstalled' => 'SocietyInstalledMiddleware',
-            'resolveSidebars'  => 'ResolveSidebars',
-            'verifyCsrfToken'  => 'VerifyCsrfToken',
+            'resolveSidebars' => 'ResolveSidebars',
+            'verifyCsrfToken' => 'VerifyCsrfToken',
         ],
     ];
 
@@ -65,12 +66,13 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('society.isInstalled', function ($app) {
-            return file_exists(base_path('.env')) && file_exists(storage_path('app/installed'));
+        $this->app->bind('society.isInstalled', function ($app) {
+            return
+                file_exists(base_path('.env')) &&
+                file_exists(storage_path('app/installed')) &&
+                Schema::hasTable('migrations');
         });
-
         $this->registerModuleVendorDependencies();
-
     }
 
     /**
@@ -101,7 +103,7 @@ class CoreServiceProvider extends ServiceProvider
             $this->registerLanguageNamespace($module);
             $this->registerConfigNamespace($module);
 
-            if($this->app['society.isInstalled']) {
+            if ($this->app['society.isInstalled']) {
                 $permissionManager = new \Modules\Core\Permissions\PermissionManager();
                 $permissionManager->registerDefault($module);
             }

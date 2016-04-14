@@ -2,15 +2,53 @@
 
 namespace Modules\Core\Traits\Testing;
 
-trait DatabaseMigrations
+/**
+ * Class MigrateSocietyCMSDemo
+ * @package Modules\Core\Traits\Testing
+ */
+trait MigrateSocietyCMSDemo
 {
     /**
      * @before
      */
-    public function runDatabaseMigrations()
+    public function runMigrateSocietyCMSDemo()
     {
-        $this->artisan('module:migrate-reset', ['--database' => 'sqlite']);
-        $this->artisan('module:migrate', ['--database' => 'sqlite']);
-        $this->artisan('module:seed', ['--database' => 'sqlite']);
+        $this->demoSeedCoreModules();
     }
+
+
+    /**
+     * @var array
+     */
+    protected $modules = [
+        'Core',
+        'User',
+        'Setting',
+        'Modules',
+        'Menu',
+        'Dashboard',
+    ];
+
+    /**
+     *
+     */
+    private function demoSeedCoreModules()
+    {
+        foreach ($this->modules as $module) {
+            $this->runDemoSeed($module);
+        }
+    }
+
+    /**
+     * @param $moduleName
+     */
+    private function runDemoSeed($moduleName)
+    {
+        $demoSeederClass = "Modules\\{$moduleName}\\Database\\Seeders\\DemoTableSeeder";
+        if (!class_exists($demoSeederClass)) {
+            return;
+        }
+        $this->artisan('db:seed', ['--class' => $demoSeederClass, '--database' => config('database.default')]);
+    }
+
 }
