@@ -1,5 +1,1 @@
 <?php
-
-get('/test', function () {
-
-});

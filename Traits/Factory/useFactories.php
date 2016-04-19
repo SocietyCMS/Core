@@ -5,8 +5,15 @@ namespace Modules\Core\Traits\Factory;
 use Faker\Generator as FakerGenerator;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
+/**
+ * Class useFactories
+ * @package Modules\Core\Traits\Factory
+ */
 trait useFactories
 {
+    /**
+     * @return $this|\Illuminate\Database\Eloquent\FactoryBuilder
+     */
     public function factory()
     {
         $faker = app(FakerGenerator::class);

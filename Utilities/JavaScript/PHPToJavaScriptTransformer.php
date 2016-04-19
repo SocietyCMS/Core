@@ -7,6 +7,10 @@ use JsonSerializable;
 use Modules\Core\Utilities\AssetManager\JavascriptPipeline\JavascriptPipeline;
 use stdClass;
 
+/**
+ * Class PHPToJavaScriptTransformer
+ * @package Modules\Core\Utilities\JavaScript
+ */
 class PHPToJavaScriptTransformer
 {
     /**

@@ -4,9 +4,19 @@ namespace Modules\Core\Services;
 
 use Symfony\Component\Process\Process;
 
+/**
+ * Class Composer
+ * @package Modules\Core\Services
+ */
 class Composer extends \Illuminate\Foundation\Composer
 {
+    /**
+     * @var null
+     */
     protected $outputHandler = null;
+    /**
+     * @var
+     */
     private $output;
 
     /**
@@ -72,6 +82,8 @@ class Composer extends \Illuminate\Foundation\Composer
     }
 
     /**
+     * Dumps the autoloader
+     *
      * @return void
      */
     public function dumpAutoload()
@@ -81,6 +93,11 @@ class Composer extends \Illuminate\Foundation\Composer
         $process->run($this->output);
     }
 
+    /**
+     * Removes a package from the require or require-dev
+     * 
+     * @param $package
+     */
     public function remove($package)
     {
         if (!is_null($package)) {

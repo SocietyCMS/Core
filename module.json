@@ -11,22 +11,24 @@
   "active": 1,
   "order": 0,
   "providers": [
+    "Modules\\Core\\Providers\\ModulesServiceProvider",
+
+    "Collective\\Html\\HtmlServiceProvider",
+    "Dingo\\Api\\Provider\\LaravelServiceProvider",
+    "FloatingPoint\\Stylist\\StylistServiceProvider",
+    "Intervention\\Image\\ImageServiceProvider",
+    "Laracasts\\Flash\\FlashServiceProvider",
+    "Laravolt\\Avatar\\ServiceProvider",
+    "Maatwebsite\\Sidebar\\SidebarServiceProvider",
+    "Prettus\\Repository\\Providers\\RepositoryServiceProvider",
+    "Spatie\\MediaLibrary\\MediaLibraryServiceProvider",
+    "Tymon\\JWTAuth\\Providers\\JWTAuthServiceProvider",
+    "Zizaco\\Entrust\\EntrustServiceProvider",
+
     "Modules\\Core\\Providers\\CoreServiceProvider",
     "Modules\\Core\\Providers\\EventServiceProvider",
     "Modules\\Core\\Providers\\AssetServiceProvider",
-    "Modules\\Core\\Providers\\BladeExtensionsServiceProvider",
-    "Modules\\Core\\Utilities\\JavaScript\\JavaScriptServiceProvider",
-    "FloatingPoint\\Stylist\\StylistServiceProvider",
-    "Laracasts\\Flash\\FlashServiceProvider",
-    "Maatwebsite\\Sidebar\\SidebarServiceProvider",
-    "Collective\\Html\\HtmlServiceProvider",
-    "Dingo\\Api\\Provider\\LaravelServiceProvider",
-    "Tymon\\JWTAuth\\Providers\\JWTAuthServiceProvider",
-    "Prettus\\Repository\\Providers\\RepositoryServiceProvider",
-    "Spatie\\MediaLibrary\\MediaLibraryServiceProvider",
-    "Zizaco\\Entrust\\EntrustServiceProvider",
-    "Laravolt\\Avatar\\ServiceProvider",
-    "Intervention\\Image\\ImageServiceProvider"
+    "Modules\\Core\\Utilities\\JavaScript\\JavaScriptServiceProvider"
   ],
   "aliases": {
     "Form": "Collective\\Html\\FormFacade",

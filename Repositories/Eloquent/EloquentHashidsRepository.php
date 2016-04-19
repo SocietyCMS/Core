@@ -4,6 +4,10 @@ namespace Modules\Core\Repositories\Eloquent;
 
 use Modules\Core\Repositories\HashidsRepository;
 
+/**
+ * Class EloquentHashidsRepository
+ * @package Modules\Core\Repositories\Eloquent
+ */
 abstract class EloquentHashidsRepository extends EloquentBaseRepository implements HashidsRepository
 {
     /**

@@ -5,6 +5,10 @@ namespace Modules\Core\Utilities\AssetManager\JavascriptPipeline;
 use Illuminate\Support\Collection;
 use Modules\Core\Utilities\AssetManager\Exceptions\AssetNotFoundException;
 
+/**
+ * Class SocietyJavascriptPipeline
+ * @package Modules\Core\Utilities\AssetManager\JavascriptPipeline
+ */
 class SocietyJavascriptPipeline implements JavascriptPipeline
 {
     /**
@@ -12,6 +16,9 @@ class SocietyJavascriptPipeline implements JavascriptPipeline
      */
     protected $js;
 
+    /**
+     * SocietyJavascriptPipeline constructor.
+     */
     public function __construct()
     {
         $this->js = new Collection();

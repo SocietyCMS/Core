@@ -4,8 +4,16 @@ namespace Modules\Core\Listeners;
 
 use Dingo\Api\Event\ResponseWasMorphed;
 
+/**
+ * Class AddSuccessDirectiveToApiResponse
+ * @package Modules\Core\Listeners
+ */
 class AddSuccessDirectiveToApiResponse
 {
+    /**
+     * @param ResponseWasMorphed $event
+     * @return bool|void
+     */
     public function handle(ResponseWasMorphed $event)
     {
         if (!is_array($event->content)) {

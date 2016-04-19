@@ -2,6 +2,10 @@
 
 namespace Modules\Core\Utilities\AssetManager\JavascriptPipeline;
 
+/**
+ * Interface JavascriptPipeline
+ * @package Modules\Core\Utilities\AssetManager\JavascriptPipeline
+ */
 interface JavascriptPipeline
 {
     /**

@@ -52,10 +52,6 @@ abstract class RoutingServiceProvider extends ServiceProvider
     {
         $apiRoutes = $this->getApiRoute();
 
-        app('Dingo\Api\Auth\Auth')->extend('jwt', function ($app) {
-            return new \Dingo\Api\Auth\Provider\JWT($app['Tymon\JWTAuth\JWTAuth']);
-        });
-
         if ($apiRoutes && file_exists($apiRoutes)) {
             require $apiRoutes;
         }

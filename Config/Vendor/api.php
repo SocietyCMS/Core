@@ -1,47 +1,28 @@
 <?php
 
 return [
-
     /*
-    |--------------------------------------------------------------------------
-    | Standards Tree
-    |--------------------------------------------------------------------------
-    |
-    | Versioning an API with Dingo revolves around content negotiation and
-    | custom MIME types. A custom type will belong to one of three
-    | standards trees, the Vendor tree (vnd), the Personal tree
-    | (prs), and the Unregistered tree (x).
-    |
-    | By default the Unregistered tree (x) is used, however, should you wish
-    | to you can register your type with the IANA. For more details:
-    | https://tools.ietf.org/html/rfc6838
-    |
-    */
+   |--------------------------------------------------------------------------
+   | API Vendor
+   |--------------------------------------------------------------------------
+   |
+   | Your vendor is used in the "Accept" request header and will be used by
+   | the consumers of your API. Typically this will be the name of your
+   | application or website.
+   |
+   */
 
-    'standardsTree' => 'vnd',
-
-    /*
-    |--------------------------------------------------------------------------
-    | API Subtype
-    |--------------------------------------------------------------------------
-    |
-    | Your subtype will follow the standards tree you use when used in the
-    | "Accept" header to negotiate the content type and version.
-    |
-    | For example: Accept: application/x.SUBTYPE.v1+json
-    |
-    */
-
-    'subtype' => 'societycms',
+    'vendor' => 'societycms',
 
     /*
     |--------------------------------------------------------------------------
     | Default API Version
     |--------------------------------------------------------------------------
     |
-    | This is the default version when strict mode is disabled and your API
-    | is accessed via a web browser. It's also used as the default version
-    | when generating your APIs documentation.
+    | When a request is made to the API and no version is specified then it
+    | will default to the version specified here. This version is also
+    | used as a default when no version is supplied when generating
+    | documentation using the Artisan command.
     |
     */
 
@@ -69,7 +50,7 @@ return [
     |
     */
 
-    'domain' => null,
+    'domain' => env('API_DOMAIN', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -137,11 +118,11 @@ return [
     */
 
     'errorFormat' => [
-        'message'     => ':message',
-        'errors'      => ':errors',
-        'code'        => ':code',
+        'message' => ':message',
+        'errors' => ':errors',
+        'code' => ':code',
         'status_code' => ':status_code',
-        'debug'       => ':debug',
+        'debug' => ':debug',
     ],
 
     /*
@@ -155,7 +136,12 @@ return [
     */
 
     'auth' => [
-
+        'basic' => function ($app) {
+            return new Dingo\Api\Auth\Provider\Basic($app['auth']);
+        },
+        'jwt' => function ($app) {
+            return new Dingo\Api\Auth\Provider\JWT($app['Tymon\JWTAuth\JWTAuth']);
+        },
     ],
 
     /*
@@ -185,7 +171,7 @@ return [
     |
     */
 
-    'transformer' => 'Dingo\Api\Transformer\Adapter\Fractal',
+    'transformer' => env('API_TRANSFORMER', 'Dingo\Api\Transformer\Adapter\Fractal'),
 
     /*
     |--------------------------------------------------------------------------
@@ -198,12 +184,11 @@ return [
     |
     */
 
-    'defaultFormat' => 'json',
+    'defaultFormat' => env('API_DEFAULT_FORMAT', 'json'),
 
     'formats' => [
 
         'json' => 'Dingo\Api\Http\Response\Format\Json',
 
     ],
-
 ];

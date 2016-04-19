@@ -3,7 +3,8 @@
 namespace Modules\Core\Traits\Testing;
 
 /**
- * Class MigrateSocietyCMSDemo.
+ * Class MigrateSocietyCMSDemo
+ * @package Modules\Core\Traits\Testing
  */
 trait MigrateSocietyCMSDemo
 {
@@ -27,6 +28,9 @@ trait MigrateSocietyCMSDemo
         'Dashboard',
     ];
 
+    /**
+     *
+     */
     private function demoSeedCoreModules()
     {
         foreach ($this->modules as $module) {

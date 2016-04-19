@@ -7,4 +7,13 @@ namespace Modules\Core\Repositories;
  */
 interface HashidsRepository extends BaseRepository
 {
+    /**
+     * Find a resource by an given Uid.
+     *
+     * @param $id
+     * @param array $columns
+     * @return object
+     *
+     */
+    public function findByUid($id, $columns = ['*']);
 }

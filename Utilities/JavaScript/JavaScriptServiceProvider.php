@@ -6,6 +6,10 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Utilities\AssetManager\JavascriptPipeline\JavascriptPipeline;
 
+/**
+ * Class JavaScriptServiceProvider
+ * @package Modules\Core\Utilities\JavaScript
+ */
 class JavaScriptServiceProvider extends ServiceProvider
 {
     /**

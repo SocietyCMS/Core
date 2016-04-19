@@ -37,7 +37,7 @@ class PermissionManager
      *
      * @return array
      */
-    public function managed()
+    public function allManagedPermissions()
     {
         return $this->permissions->where('name', 'NOT LIKE', '%:unmanaged::%')->orderBy('module')->get()->groupBy('module');
     }

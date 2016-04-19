@@ -5,6 +5,10 @@ namespace Modules\Core\Repositories\Eloquent;
 use Illuminate\Support\Str;
 use Modules\Core\Repositories\SlugRepository;
 
+/**
+ * Class EloquentSlugRepository
+ * @package Modules\Core\Repositories\Eloquent
+ */
 abstract class EloquentSlugRepository extends EloquentBaseRepository implements SlugRepository
 {
     /**
