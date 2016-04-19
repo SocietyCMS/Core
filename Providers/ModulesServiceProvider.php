@@ -3,11 +3,7 @@
 namespace Modules\Core\Providers;
 
 use Config;
-use Illuminate\Routing\Router;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Maatwebsite\Sidebar\SidebarManager;
-use Modules\Core\Sidebar\AdminSidebar;
 use Pingpong\Modules\Module;
 
 /**
@@ -23,15 +19,14 @@ class ModulesServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
-     * Prefix for SocietyCMS modules config files
-     * 
+     * Prefix for SocietyCMS modules config files.
+     *
      * @var string
      */
     protected $prefix = 'society';
 
     /**
      * Boot the application events.
-     *
      */
     public function boot()
     {

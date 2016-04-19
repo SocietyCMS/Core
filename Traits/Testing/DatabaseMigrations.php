@@ -3,8 +3,7 @@
 namespace Modules\Core\Traits\Testing;
 
 /**
- * Class DatabaseMigrations
- * @package Modules\Core\Traits\Testing
+ * Class DatabaseMigrations.
  */
 trait DatabaseMigrations
 {

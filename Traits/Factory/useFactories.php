@@ -6,8 +6,7 @@ use Faker\Generator as FakerGenerator;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 /**
- * Class useFactories
- * @package Modules\Core\Traits\Factory
+ * Class useFactories.
  */
 trait useFactories
 {

@@ -5,8 +5,7 @@ namespace Modules\Core\Utilities\JavaScript;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class JavaScriptFacade
- * @package Modules\Core\Utilities\JavaScript
+ * Class JavaScriptFacade.
  */
 class JavaScriptFacade extends Facade
 {

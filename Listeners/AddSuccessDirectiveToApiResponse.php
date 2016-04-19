@@ -5,13 +5,13 @@ namespace Modules\Core\Listeners;
 use Dingo\Api\Event\ResponseWasMorphed;
 
 /**
- * Class AddSuccessDirectiveToApiResponse
- * @package Modules\Core\Listeners
+ * Class AddSuccessDirectiveToApiResponse.
  */
 class AddSuccessDirectiveToApiResponse
 {
     /**
      * @param ResponseWasMorphed $event
+     *
      * @return bool|void
      */
     public function handle(ResponseWasMorphed $event)

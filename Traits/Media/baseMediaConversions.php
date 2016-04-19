@@ -6,14 +6,10 @@ namespace Modules\Core\Traits\Media;
  * Class baseMediaConversions.
  */
 /**
- * Class baseMediaConversions
- * @package Modules\Core\Traits\Media
+ * Class baseMediaConversions.
  */
 trait baseMediaConversions
 {
-    /**
-     *
-     */
     public function registerMediaConversions()
     {
         $this->addMediaConversion('square100')

@@ -6,8 +6,7 @@ use Illuminate\Support\Str;
 use Modules\Core\Repositories\SlugRepository;
 
 /**
- * Class EloquentSlugRepository
- * @package Modules\Core\Repositories\Eloquent
+ * Class EloquentSlugRepository.
  */
 abstract class EloquentSlugRepository extends EloquentBaseRepository implements SlugRepository
 {
