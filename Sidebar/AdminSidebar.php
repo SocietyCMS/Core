@@ -10,13 +10,12 @@ use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Pingpong\Modules\Contracts\RepositoryInterface;
 
 /**
- * Class AdminSidebar
- * @package Modules\Core\Sidebar
+ * Class AdminSidebar.
  */
 class AdminSidebar implements Sidebar, ShouldCache
 {
     use CacheableTrait;
-    
+
     /**
      * @var Menu
      */

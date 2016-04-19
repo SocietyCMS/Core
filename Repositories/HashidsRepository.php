@@ -12,8 +12,8 @@ interface HashidsRepository extends BaseRepository
      *
      * @param $id
      * @param array $columns
-     * @return object
      *
+     * @return object
      */
     public function findByUid($id, $columns = ['*']);
 }

@@ -6,14 +6,14 @@ use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
- * Class OrderCriteria
- * @package Modules\Core\Repositories\Eloquent\Criteria
+ * Class OrderCriteria.
  */
 class OrderCriteria implements CriteriaInterface
 {
     /**
      * @param $model
      * @param RepositoryInterface $repository
+     *
      * @return mixed
      */
     public function apply($model, RepositoryInterface $repository)

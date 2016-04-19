@@ -6,8 +6,7 @@ use Illuminate\Support\Collection;
 use Modules\Core\Utilities\AssetManager\Exceptions\AssetNotFoundException;
 
 /**
- * Class SocietyJavascriptPipeline
- * @package Modules\Core\Utilities\AssetManager\JavascriptPipeline
+ * Class SocietyJavascriptPipeline.
  */
 class SocietyJavascriptPipeline implements JavascriptPipeline
 {

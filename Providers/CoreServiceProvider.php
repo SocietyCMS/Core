@@ -2,7 +2,6 @@
 
 namespace Modules\Core\Providers;
 
-use Config;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -37,7 +36,6 @@ class CoreServiceProvider extends ServiceProvider
 
     /**
      * Boot the application events.
-     *
      */
     public function boot()
     {
@@ -84,12 +82,11 @@ class CoreServiceProvider extends ServiceProvider
                 $permissionManager = new PermissionManager();
                 $permissionManager->registerDefault($module);
             }
-
         }
     }
 
     /**
-     * Register general App-Bindings
+     * Register general App-Bindings.
      */
     private function registerBindings()
     {
@@ -102,12 +99,14 @@ class CoreServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the AdminSidebar
+     * Register the AdminSidebar.
+     *
      * @return mixed
      */
     private function registerSidebar()
     {
         $manager = app(SidebarManager::class);
+
         return $manager->register(AdminSidebar::class);
     }
 
@@ -120,5 +119,4 @@ class CoreServiceProvider extends ServiceProvider
     {
         return [];
     }
-
 }

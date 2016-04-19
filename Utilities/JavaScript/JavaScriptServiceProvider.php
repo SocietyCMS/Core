@@ -7,8 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Core\Utilities\AssetManager\JavascriptPipeline\JavascriptPipeline;
 
 /**
- * Class JavaScriptServiceProvider
- * @package Modules\Core\Utilities\JavaScript
+ * Class JavaScriptServiceProvider.
  */
 class JavaScriptServiceProvider extends ServiceProvider
 {

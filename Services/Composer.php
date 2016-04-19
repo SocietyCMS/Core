@@ -5,8 +5,7 @@ namespace Modules\Core\Services;
 use Symfony\Component\Process\Process;
 
 /**
- * Class Composer
- * @package Modules\Core\Services
+ * Class Composer.
  */
 class Composer extends \Illuminate\Foundation\Composer
 {
@@ -82,7 +81,7 @@ class Composer extends \Illuminate\Foundation\Composer
     }
 
     /**
-     * Dumps the autoloader
+     * Dumps the autoloader.
      *
      * @return void
      */
@@ -94,8 +93,8 @@ class Composer extends \Illuminate\Foundation\Composer
     }
 
     /**
-     * Removes a package from the require or require-dev
-     * 
+     * Removes a package from the require or require-dev.
+     *
      * @param $package
      */
     public function remove($package)
