@@ -104,7 +104,7 @@ class AdminUserInstaller implements SetupScript
             if ($firstname == '') {
                 $this->command->error('First name is required');
             }
-        } while (!$firstname);
+        } while (! $firstname);
 
         return $firstname;
     }
@@ -119,7 +119,7 @@ class AdminUserInstaller implements SetupScript
             if ($lastname == '') {
                 $this->command->error('Last name is required');
             }
-        } while (!$lastname);
+        } while (! $lastname);
 
         return $lastname;
     }
@@ -134,7 +134,7 @@ class AdminUserInstaller implements SetupScript
             if ($email == '') {
                 $this->command->error('Email is required');
             }
-        } while (!$email);
+        } while (! $email);
 
         return $email;
     }
@@ -165,7 +165,7 @@ class AdminUserInstaller implements SetupScript
             if ($password == '') {
                 $this->command->error('Password is required');
             }
-        } while (!$password);
+        } while (! $password);
 
         return $password;
     }
@@ -180,7 +180,7 @@ class AdminUserInstaller implements SetupScript
             if ($passwordConfirmation == '') {
                 $this->command->error('Password confirmation is required');
             }
-        } while (!$passwordConfirmation);
+        } while (! $passwordConfirmation);
 
         return $passwordConfirmation;
     }

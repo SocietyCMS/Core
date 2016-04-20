@@ -20,7 +20,7 @@ class UnignoreComposerLock implements SetupScript
     {
         $gitignorePath = base_path('.gitignore');
 
-        if (!$this->gitignoreContainsComposerLock($gitignorePath)) {
+        if (! $this->gitignoreContainsComposerLock($gitignorePath)) {
             return;
         }
 

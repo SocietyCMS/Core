@@ -62,13 +62,13 @@ class PermissionManager
         $name = studly_case($module->getName());
         $class = 'Modules\\'.$name.'\\Installer\\RegisterDefaultPermissions';
 
-        if (!class_exists($class)) {
+        if (! class_exists($class)) {
             return false;
         }
 
         $registerDefaultPermissions = $this->container->make($class);
 
-        if (!property_exists($registerDefaultPermissions, 'defaultPermissions')) {
+        if (! property_exists($registerDefaultPermissions, 'defaultPermissions')) {
             return false;
         }
 
@@ -86,7 +86,7 @@ class PermissionManager
 
     public function registerPermission($name, $display_name = null, $description = null, $module = null)
     {
-        if (!$this->permissions->where('name', '=', $name)->first()) {
+        if (! $this->permissions->where('name', '=', $name)->first()) {
             return $this->permissions->create([
                 'name'         => $name,
                 'display_name' => $display_name,

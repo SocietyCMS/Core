@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('apiRoute')) {
+if (! function_exists('apiRoute')) {
     /**
      * Generate a URL to a named route.
      *

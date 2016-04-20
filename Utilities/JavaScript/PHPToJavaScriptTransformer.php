@@ -133,7 +133,7 @@ class PHPToJavaScriptTransformer
         // it needs to be transformed for JS-use.
         foreach ($this->types as $transformer) {
             $js = $this->{"transform{$transformer}"}($value);
-            if (!is_null($js)) {
+            if (! is_null($js)) {
                 return $js;
             }
         }
@@ -204,7 +204,7 @@ class PHPToJavaScriptTransformer
      */
     protected function transformObject($value)
     {
-        if (!is_object($value)) {
+        if (! is_object($value)) {
             return;
         }
         if ($value instanceof JsonSerializable || $value instanceof StdClass) {
@@ -217,7 +217,7 @@ class PHPToJavaScriptTransformer
         }
         // Otherwise, if the object doesn't even have a
         // __toString() method, we can't proceed.
-        if (!method_exists($value, '__toString')) {
+        if (! method_exists($value, '__toString')) {
             throw new Exception('Cannot transform this object to JavaScript.');
         }
 

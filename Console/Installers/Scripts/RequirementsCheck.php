@@ -61,7 +61,7 @@ class RequirementsCheck implements SetupScript
     private function checkExtensions()
     {
         foreach ($this->requiredExtensions as $extension => $extensionName) {
-            if (!extension_loaded($extension)) {
+            if (! extension_loaded($extension)) {
                 $this->requirements[] = [$extensionName, false];
                 $this->hasErrors = true;
                 continue;
