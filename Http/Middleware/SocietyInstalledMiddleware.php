@@ -19,7 +19,7 @@ class SocietyInstalledMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (!app('society.isInstalled')) {
+        if (! app('society.isInstalled')) {
             throw new \Exception('SocietyCMS is not yet installed');
         }
 

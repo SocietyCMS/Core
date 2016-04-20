@@ -48,7 +48,7 @@ class ConfigureDatabase implements SetupScript
 
         $connected = false;
 
-        while (!$connected) {
+        while (! $connected) {
             $host = $this->askDatabaseHost();
 
             $name = $this->askDatabaseName();
@@ -91,7 +91,7 @@ class ConfigureDatabase implements SetupScript
             if ($name == '') {
                 $this->command->error('Database name is required');
             }
-        } while (!$name);
+        } while (! $name);
 
         return $name;
     }
@@ -108,7 +108,7 @@ class ConfigureDatabase implements SetupScript
             if ($user == '') {
                 $this->command->error('Database username is required');
             }
-        } while (!$user);
+        } while (! $user);
 
         return $user;
     }

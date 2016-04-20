@@ -51,7 +51,7 @@ class ModuleSeeders implements SetupScript
         foreach (app('modules')->enabled() as $module) {
             $name = studly_case($module->getName());
 
-            if (!in_array($name, $this->modules)) {
+            if (! in_array($name, $this->modules)) {
                 $this->runDemoSeed($command, $name);
             }
         }
@@ -66,7 +66,7 @@ class ModuleSeeders implements SetupScript
         $command->info("Seeding {$moduleName} Module");
 
         $demoSeederClass = "Modules\\{$moduleName}\\Database\\Seeders\\DemoTableSeeder";
-        if (!class_exists($demoSeederClass)) {
+        if (! class_exists($demoSeederClass)) {
             return;
         }
         if ($command->option('verbose')) {

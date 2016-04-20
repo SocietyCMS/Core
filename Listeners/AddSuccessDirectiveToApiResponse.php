@@ -16,7 +16,7 @@ class AddSuccessDirectiveToApiResponse
      */
     public function handle(ResponseWasMorphed $event)
     {
-        if (!is_array($event->content)) {
+        if (! is_array($event->content)) {
             return;
         }
         if ($event->response->getStatusCode() == 200) {

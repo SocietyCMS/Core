@@ -40,7 +40,7 @@ trait MigrateSocietyCMSDemo
     private function runDemoSeed($moduleName)
     {
         $demoSeederClass = "Modules\\{$moduleName}\\Database\\Seeders\\DemoTableSeeder";
-        if (!class_exists($demoSeederClass)) {
+        if (! class_exists($demoSeederClass)) {
             return;
         }
         $this->artisan('db:seed', ['--class' => $demoSeederClass, '--database' => config('database.default')]);

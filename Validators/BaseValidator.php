@@ -59,7 +59,7 @@ class BaseValidator extends AbstractValidator
      */
     public function fails($action = null)
     {
-        return !$this->passes($action);
+        return ! $this->passes($action);
     }
 
     /**

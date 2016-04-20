@@ -35,7 +35,7 @@ class ProtectInstaller implements SetupScript
     {
         if ($this->finder->isFile('.env') &&
             $this->finder->isFile(storage_path('app/installed')) &&
-            !$command->option('force')
+            ! $command->option('force')
         ) {
             throw new Exception('SocietyCMS has already been installed. You can already log into your administration.');
         }
