@@ -11,10 +11,13 @@ return [
         'site-description' => [
             'title' => 'core::settings.website.site-description',
             'view'  => 'textarea',
-        ],
+        ]
+    ],
+
+    'core::settings.mail.title' => [
         'mail-from' => [
-            'title'       => 'core::settings.website.mail-from.title',
-            'description' => 'core::settings.website.mail-from.description',
+            'title'       => 'core::settings.mail.mail-from.title',
+            'description' => 'core::settings.mail.mail-from.description',
             'view'        => 'text',
             'default'     => 'mail@societycms.com',
         ],
