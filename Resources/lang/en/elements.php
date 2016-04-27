@@ -30,7 +30,7 @@ return [
         'create resource' => 'Create :name',
         'edit resource'   => 'Edit :name',
         'delete resource' => 'Delete :name',
-        'read more' => 'Read more'
+        'read more' => 'Read more',
     ],
     'info' => [
         'title'      => 'Info',

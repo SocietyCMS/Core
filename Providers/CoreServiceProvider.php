@@ -113,7 +113,7 @@ class CoreServiceProvider extends ServiceProvider
     }
 
     /**
-     * Set the application local for Carbon
+     * Set the application local for Carbon.
      */
     private function setLocale()
     {
