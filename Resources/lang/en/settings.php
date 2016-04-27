@@ -14,7 +14,7 @@ return [
 
         'mail-from' => [
             'title'       => 'Mail sender address',
-            'description' => 'This adress is used when we send mails',
+            'description' => 'This address is used when we send mails',
         ],
     ],
 

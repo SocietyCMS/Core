@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Providers;
 
+use Carbon\Carbon;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -29,8 +30,8 @@ class CoreServiceProvider extends ServiceProvider
     protected $middleware = [
         'Core' => [
             'societyInstalled' => 'SocietyInstalledMiddleware',
-            'resolveSidebars'  => 'ResolveSidebars',
-            'verifyCsrfToken'  => 'VerifyCsrfToken',
+            'resolveSidebars' => 'ResolveSidebars',
+            'verifyCsrfToken' => 'VerifyCsrfToken',
         ],
     ];
 
@@ -39,6 +40,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->setLocale();
         $this->registerSidebar();
         $this->registerMiddleware($this->app['router']);
     }
@@ -108,6 +110,14 @@ class CoreServiceProvider extends ServiceProvider
         $manager = app(SidebarManager::class);
 
         return $manager->register(AdminSidebar::class);
+    }
+
+    /**
+     * Set the application local for Carbon
+     */
+    private function setLocale()
+    {
+        Carbon::setLocale(config('app.locale'));
     }
 
     /**
