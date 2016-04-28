@@ -1,17 +1,18 @@
 <?php
 
 return [
-    'button' => [
+    'button'       => [
         'edit'             => 'Edit',
         'cancel'           => 'Cancel',
         'create'           => 'Create',
         'update'           => 'Update',
         'delete'           => 'Delete',
+        'save'             => 'Save',
         'reset'            => 'Reset',
         'update and back'  => 'Update and go back',
         'optional details' => 'Optional Details',
     ],
-    'state' => [
+    'state'        => [
         'enabled'   => 'Enabled',
         'disabled'  => 'Disabled',
         'added'     => 'Added',
@@ -25,22 +26,23 @@ return [
         'disable' => 'Disable',
         'publish' => 'Publish',
     ],
-    'action' => [
+    'action'       => [
         'add resource'    => 'Add :name',
         'create resource' => 'Create :name',
         'edit resource'   => 'Edit :name',
         'delete resource' => 'Delete :name',
-        'read more' => 'Read more',
+        'read more'       => 'Read more',
     ],
-    'info' => [
+    'info'         => [
         'title'      => 'Info',
         'created at' => 'Created at :time',
         'updated at' => 'Updated at :time',
     ],
-    'progress' => [
+    'progress'     => [
+        'loading' => 'Loading',
         'uploading resource' => 'Uploading :name ...',
     ],
-    'separator' => [
+    'separator'    => [
         'or' => 'Or',
     ],
 ];
