@@ -98,7 +98,6 @@ class ModulesServiceProvider extends ServiceProvider
         } else {
             $this->loadTranslationsFrom($module->getPath().'/Resources/lang', $moduleName);
             $this->app['localization.js-generator']->addSourcePath($module->getPath().'/Resources/lang');
-
         }
     }
 
