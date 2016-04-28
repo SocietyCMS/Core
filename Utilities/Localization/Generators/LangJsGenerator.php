@@ -85,7 +85,7 @@ class LangJsGenerator
      * @return array
      * @throws \Exception
      */
-    protected function getMessagesFromSourcePath($path,$namespace)
+    protected function getMessagesFromSourcePath($path, $namespace)
     {
         $messages = [];
         if (! $this->file->exists($path)) {
@@ -101,7 +101,7 @@ class LangJsGenerator
             $key = str_replace('/', '.', $key);
 
             $array = explode('.', $key, 2);
-            $keyWithNamespace = $array[0].".".$namespace."::".$array[1];
+            $keyWithNamespace = $array[0].'.'.$namespace.'::'.$array[1];
             $messages[$keyWithNamespace] = include "${path}/${pathName}";
         }
 
