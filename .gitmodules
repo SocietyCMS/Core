@@ -1,0 +1,3 @@
+[submodule "Utilities/Localization/Lang.js"]
+	path = Utilities/Localization/Lang.js
+	url = https://github.com/rmariuzzo/Lang.js.git
