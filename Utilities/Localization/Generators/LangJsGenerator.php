@@ -59,9 +59,9 @@ class LangJsGenerator
      *
      * @param $sourcePath
      */
-    public function addSourcePath($sourcePath)
+    public function addSourcePath($sourcePath, $moduleName)
     {
-        $this->sourcePath[] = $sourcePath;
+        $this->sourcePath[$moduleName] = $sourcePath;
     }
 
     /**
@@ -72,8 +72,8 @@ class LangJsGenerator
     protected function getMessages()
     {
         $messages = [];
-        foreach ($this->sourcePath as $path) {
-            $messages = array_merge($this->getMessagesFromSourcePath($path), $messages);
+        foreach ($this->sourcePath as $namespace => $path) {
+            $messages = array_merge($this->getMessagesFromSourcePath($path, $namespace), $messages);
         }
 
         return $messages;
@@ -85,7 +85,7 @@ class LangJsGenerator
      * @return array
      * @throws \Exception
      */
-    protected function getMessagesFromSourcePath($path)
+    protected function getMessagesFromSourcePath($path,$namespace)
     {
         $messages = [];
         if (! $this->file->exists($path)) {
@@ -99,7 +99,10 @@ class LangJsGenerator
             $key = substr($pathName, 0, -4);
             $key = str_replace('\\', '.', $key);
             $key = str_replace('/', '.', $key);
-            $messages[$key] = include "${path}/${pathName}";
+
+            $array = explode('.', $key, 2);
+            $keyWithNamespace = $array[0].".".$namespace."::".$array[1];
+            $messages[$keyWithNamespace] = include "${path}/${pathName}";
         }
 
         return $messages;
