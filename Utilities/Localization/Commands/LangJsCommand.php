@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Utilities\Localization\Commands;
+<?php
+
+namespace Modules\Core\Utilities\Localization\Commands;
 
 use Illuminate\Console\Command;
 use Modules\Core\Utilities\Localization\Generators\LangJsGenerator;
@@ -7,7 +9,6 @@ use Symfony\Component\Console\Input\InputArgument;
 
 /**
  * The LangJsCommand class.
- *
  */
 class LangJsCommand extends Command
 {
@@ -56,7 +57,7 @@ class LangJsCommand extends Command
     protected function getArguments()
     {
         return [
-            ['target', InputArgument::OPTIONAL, 'Target path.', $this->getPublicPath() . '/messages.js'],
+            ['target', InputArgument::OPTIONAL, 'Target path.', $this->getPublicPath().'/messages.js'],
         ];
     }
 

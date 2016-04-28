@@ -9,7 +9,6 @@ use Illuminate\Support\ServiceProvider;
  */
 class LocalizationServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -26,6 +25,7 @@ class LocalizationServiceProvider extends ServiceProvider
     {
         $this->app['localization.js-generator'] = $this->app->share(function ($app) {
             $files = $app['files'];
+
             return new Generators\LangJsGenerator($files);
         });
         $this->app['localization.js'] = $this->app->share(function ($app) {

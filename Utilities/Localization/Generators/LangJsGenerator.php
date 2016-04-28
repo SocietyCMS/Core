@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Utilities\Localization\Generators;
+<?php
+
+namespace Modules\Core\Utilities\Localization\Generators;
 
 use Illuminate\Filesystem\Filesystem as File;
 use JShrink\Minifier;
@@ -41,7 +43,7 @@ class LangJsGenerator
     {
         $messages = $this->getMessages();
         $this->prepareTarget($target);
-        $template = $this->file->get(__DIR__ . '/Templates/langjs_with_messages.js');
+        $template = $this->file->get(__DIR__.'/Templates/langjs_with_messages.js');
         $langjs = $this->file->get(base_path('/vendor/Lang.js/src/lang.js'));
         $template = str_replace('\'{ messages }\'', json_encode($messages), $template);
         $template = str_replace('\'{ langjs }\';', $langjs, $template);
@@ -84,16 +86,18 @@ class LangJsGenerator
     protected function getMessagesFromSourcePath($path)
     {
         $messages = [];
-        if (!$this->file->exists($path)) {
+        if (! $this->file->exists($path)) {
             throw new \Exception("${path} doesn't exists!");
         }
         foreach ($this->file->allFiles($path) as $file) {
             $pathName = $file->getRelativePathName();
-            if ($this->file->extension($pathName) !== 'php') continue;
+            if ($this->file->extension($pathName) !== 'php') {
+                continue;
+            }
             $key = substr($pathName, 0, -4);
             $key = str_replace('\\', '.', $key);
             $key = str_replace('/', '.', $key);
-            $messages[ $key ] = include "${path}/${pathName}";
+            $messages[$key] = include "${path}/${pathName}";
         }
 
         return $messages;
@@ -107,7 +111,7 @@ class LangJsGenerator
     protected function prepareTarget($target)
     {
         $dirname = dirname($target);
-        if (!$this->file->exists($dirname)) {
+        if (! $this->file->exists($dirname)) {
             $this->file->makeDirectory($dirname);
         }
     }
