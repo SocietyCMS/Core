@@ -44,7 +44,7 @@ class LangJsGenerator
         $messages = $this->getMessages();
         $this->prepareTarget($target);
         $template = $this->file->get(__DIR__.'/Templates/langjs_with_messages.js');
-        $langjs = $this->file->get(base_path('/vendor/Lang.js/src/lang.js'));
+        $langjs = $this->file->get(__DIR__.'/../Lang.js/src/lang.js');
         $template = str_replace('\'{ messages }\'', json_encode($messages), $template);
         $template = str_replace('\'{ langjs }\';', $langjs, $template);
         if ($options['compress']) {
@@ -75,6 +75,7 @@ class LangJsGenerator
         foreach ($this->sourcePath as $path) {
             $messages = array_merge($this->getMessagesFromSourcePath($path), $messages);
         }
+        return $messages;
     }
 
     /**
