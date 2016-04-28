@@ -19,6 +19,7 @@ class ComposerScripts
 
         static::clearCompiled();
         static::artisanOptimize();
+        static::artisanLangJS();
     }
 
     /**
@@ -33,6 +34,7 @@ class ComposerScripts
 
         static::clearCompiled();
         static::artisanOptimize();
+        static::artisanLangJS();
     }
 
     /**
@@ -54,13 +56,22 @@ class ComposerScripts
     }
 
     /**
-     * Clear the cached Laravel bootstrapping files.
+     * Generate the compiled class file.
      *
      * @return void
      */
     protected static function artisanOptimize()
     {
-        $laravel = new Application(getcwd());
-        $laravel->call('optimize');
+        exec('php artisan optimize');
+    }
+
+    /**
+     * Generate language files.
+     *
+     * @return void
+     */
+    protected static function artisanLangJS()
+    {
+        exec('php artisan lang:js');
     }
 }
