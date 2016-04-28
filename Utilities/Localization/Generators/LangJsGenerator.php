@@ -75,6 +75,7 @@ class LangJsGenerator
         foreach ($this->sourcePath as $path) {
             $messages = array_merge($this->getMessagesFromSourcePath($path), $messages);
         }
+
         return $messages;
     }
 
