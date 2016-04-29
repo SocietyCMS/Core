@@ -72,9 +72,6 @@ class ModulesServiceProvider extends ServiceProvider
      */
     protected function registerViewNamespace(Module $module)
     {
-        if ($module->getName() == 'user') {
-            return;
-        }
         $this->app['view']->addNamespace(
             $module->getName(),
             $module->getPath().'/Resources/views'
