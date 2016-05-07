@@ -22,8 +22,7 @@ class ActivityRepository extends EloquentBaseRepository
      */
     public function latestGroupedByDate($amount = 10)
     {
-
-        if(!config('repository.cache.enabled', true) || $this->isSkippedCache()) {
+        if (! config('repository.cache.enabled', true) || $this->isSkippedCache()) {
             return $this->latestGroupedByDateSkippingCache($amount);
         }
 
