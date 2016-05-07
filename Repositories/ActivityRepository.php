@@ -35,14 +35,12 @@ interface ActivityRepository
     /**
      * Get lastest activities.
      * @return mixed
-     *
      */
     public function latest();
 
     /**
      * Get lastest activities grouped by date.
      * @return mixed
-     *
      */
     public function latestGrouped();
 }
