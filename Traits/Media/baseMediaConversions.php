@@ -28,6 +28,14 @@ trait baseMediaConversions
             ->setManipulations(['w' => 320, 'h' => 180, 'fit' => 'crop'])
             ->performOnCollections('images');
 
+        $this->addMediaConversion('wide480')
+            ->setManipulations(['w' => 480, 'h' => 270, 'fit' => 'crop'])
+            ->performOnCollections('images');
+
+        $this->addMediaConversion('wide800')
+            ->setManipulations(['w' => 800, 'h' => 450, 'fit' => 'crop'])
+            ->performOnCollections('images');
+
         $this->addMediaConversion('original100')
             ->setManipulations(['w' => 100, 'h' => 100, 'fit' => 'max'])
             ->performOnCollections('images');
