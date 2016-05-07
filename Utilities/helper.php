@@ -31,7 +31,7 @@ if (! function_exists('lang_replace')) {
     {
         $replace = (new Collection($replace))->sortBy(function ($value, $key) {
             return mb_strlen($key) * -1;
-        });;
+        });
 
         foreach ($replace as $key => $value) {
             $line = str_replace(':'.$key, $value, $line);
