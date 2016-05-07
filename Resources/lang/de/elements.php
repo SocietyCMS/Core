@@ -31,6 +31,8 @@ return [
         'create resource' => ':name erstellen',
         'edit resource'   => ':name bearbeiten',
         'delete resource' => ':name löschen',
+        'keep resource'   => ':name behalten',
+        'upload resource' => ':name hochladen',
         'read more'       => 'Weiter lesen',
     ],
     'info'         => [

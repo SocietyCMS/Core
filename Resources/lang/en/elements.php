@@ -31,6 +31,8 @@ return [
         'create resource' => 'Create :name',
         'edit resource'   => 'Edit :name',
         'delete resource' => 'Delete :name',
+        'keep resource'   => 'Keep :name',
+        'upload resource' => 'Upload :name',
         'read more'       => 'Read more',
     ],
     'info'         => [
@@ -38,13 +40,13 @@ return [
         'created at' => 'Created at :time',
         'updated at' => 'Updated at :time',
     ],
-    'table' => [
+    'table'        => [
         'created at' => 'Erstellt am',
         'updated at' => 'Bearbeitet am',
         'actions'    => 'Aktionen',
     ],
     'progress'     => [
-        'loading' => 'Loading',
+        'loading'            => 'Loading',
         'uploading resource' => 'Uploading :name ...',
     ],
     'separator'    => [
