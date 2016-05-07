@@ -19,6 +19,7 @@ class CreateActivitiesTable extends Migration
             $table->string('name');
             $table->integer('user_id')->unsigned()->nullable()->index();
             $table->string('template');
+            $table->enum('privacy', ['public', 'protected', 'private']);
             $table->timestamps();
 
             $table->engine = 'InnoDB';

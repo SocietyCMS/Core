@@ -24,7 +24,7 @@ class ActivityRepository extends EloquentBaseRepository
     {
         $this->applyCriteria();
         $this->applyScope();
-        $model = $this->model->select('*', \DB::raw('DATE_ADD(DATE_FORMAT(created_at, "%Y-%m-%d %H:00:00"),INTERVAL IF(MINUTE(created_at) < 30, 0, 1) HOUR) AS grouped_created_at'), \DB::raw('count(*) as count_in_group'))
+        $model = $this->model->select('*', \DB::raw('CONCAT(DATE_ADD(DATE_FORMAT(created_at, "%Y-%m-%d %H:00:00"),INTERVAL IF(MINUTE(created_at) < 30, 0, 1) HOUR), "-", subject_id) AS grouped_created_at'), \DB::raw('count(*) as count_in_group'))
             ->latest()
             ->groupBy('grouped_created_at')
             ->with('subject')

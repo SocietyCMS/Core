@@ -19,7 +19,7 @@ class Activity extends Model
     /**
      * @var array
      */
-    protected $fillable = ['subject_id', 'subject_type', 'name', 'user_id', 'template'];
+    protected $fillable = ['subject_id', 'subject_type', 'name', 'user_id', 'template', 'privacy'];
 
     /**
      * The relations to eager load on every query.
