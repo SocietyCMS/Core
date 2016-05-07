@@ -5,7 +5,6 @@ return [
 
     'general' => [
         'view website'          => 'View Website',
-        'complete your profile' => 'Complete your profile',
         'sign out'              => 'Sign out',
     ],
 
