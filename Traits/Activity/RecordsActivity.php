@@ -2,7 +2,6 @@
 
 namespace Modules\Core\Traits\Activity;
 
-use Carbon\Carbon;
 use Modules\Core\Entities\Activity;
 
 /**
