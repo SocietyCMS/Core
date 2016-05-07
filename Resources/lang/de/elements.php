@@ -38,6 +38,11 @@ return [
         'created at' => 'Erstellt am :time',
         'updated at' => 'Aktualisiert am :time',
     ],
+    'table' => [
+        'created at' => 'Erstellt am',
+        'updated at' => 'Bearbeitet am',
+        'actions'    => 'Aktionen',
+    ],
     'progress'     => [
         'loading' => 'Lade',
         'uploading resource' => ':name wird hochgeladen...',
