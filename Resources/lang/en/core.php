@@ -14,6 +14,6 @@ return [
         'error 404' => 'Error 404',
         'page not found' => 'Page not found',
         'message' => 'The page you are looking for could not be found, Sorry!',
-        'back to dashboard' => 'Back to Dashboard'
-    ]
+        'back to dashboard' => 'Back to Dashboard',
+    ],
 ];
