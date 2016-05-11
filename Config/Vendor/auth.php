@@ -79,8 +79,8 @@ return [
     |
     */
     'password' => [
-        'email'  => 'emails.password',
-        'table'  => 'password_resets',
+        'email'  => 'user::emails.reminder',
+        'table'  => 'user__password_resets',
         'expire' => 60,
     ],
 ];
