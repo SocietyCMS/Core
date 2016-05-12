@@ -30,7 +30,7 @@
     "spatie/laravel-medialibrary": "^3.17.4",
     "guzzlehttp/guzzle": "~6.2",
     "hashids/hashids": "1.0.5",
-    "zizaco/entrust": "^1.7",
+    "zizaco/entrust": "dev-master",
     "ramsey/uuid": "^3.3",
     "laravolt/avatar": "0.3.1",
     "html2text/html2text": "^4.0.1",
