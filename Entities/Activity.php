@@ -3,12 +3,15 @@
 namespace Modules\Core\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Modules\Core\Traits\Entities\RelatesToUser;
 
 /**
  * Class Activity.
  */
 class Activity extends Model
 {
+    use RelatesToUser;
+
     /**
      * The table associated with the model.
      *
@@ -27,14 +30,6 @@ class Activity extends Model
      * @var array
      */
     protected $with = ['user'];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo('Modules\\User\\Entities\\Entrust\\EloquentUser', 'user_id');
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
