@@ -2,9 +2,6 @@
 
 namespace Modules\Core\Traits\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-use Ramsey\Uuid\Uuid;
-
 /**
  * Class EloquentUuid.
  */
