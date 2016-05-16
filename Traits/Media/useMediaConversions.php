@@ -10,7 +10,7 @@ use ReflectionClass;
 /**
  * Class baseMediaConversions.
  */
-trait themeMediaConversions
+trait useMediaConversions
 {
     /**
      * register media conversions.
