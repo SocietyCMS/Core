@@ -2,7 +2,7 @@
 
 namespace Modules\Core\Traits\Media;
 
-/**
+/*
  * Class baseMediaConversions.
  */
 use ReflectionClass;
@@ -13,7 +13,7 @@ use ReflectionClass;
 trait themeMediaConversions
 {
     /**
-     * register media conversions
+     * register media conversions.
      */
     public function registerMediaConversions()
     {
@@ -23,7 +23,7 @@ trait themeMediaConversions
     }
 
     /**
-     * register MediaConversions defined in the themes .json file
+     * register MediaConversions defined in the themes .json file.
      */
     protected function registerMediaConversionsFromTheme()
     {
@@ -31,19 +31,19 @@ trait themeMediaConversions
         $className = strtolower(explode('\\', $namespace)[1]);
         $themeOptions = app('setting.themeOptions')->getOption("{$className}.medialibrary");
 
-        if(!$themeOptions){
+        if (! $themeOptions) {
             return;
         }
 
         foreach ($themeOptions as $themeOption) {
             $this->addMediaConversion($themeOption->name)
-                ->setManipulations((array)$themeOption->manipulation)
+                ->setManipulations((array) $themeOption->manipulation)
                 ->performOnCollections($themeOption->collection);
         }
     }
 
     /**
-     * Default MediaConversions for all Entity
+     * Default MediaConversions for all Entity.
      */
     public function defaultMediaConversions()
     {
@@ -67,9 +67,9 @@ trait themeMediaConversions
             ->setManipulations(['w' => 1920, 'h' => 1080, 'fit' => 'max'])
             ->performOnCollections('images');
     }
-    
+
     /**
-     * Additional MediaConversions for this Entity
+     * Additional MediaConversions for this Entity.
      */
     public function additionalMediaConversions()
     {
