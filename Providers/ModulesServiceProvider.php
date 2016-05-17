@@ -40,7 +40,7 @@ class ModulesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(\Spatie\MediaLibrary\Media::class,  \Modules\Core\Entities\Media::class);
+        $this->app->bind(\Spatie\MediaLibrary\Media::class, \Modules\Core\Entities\Media::class);
 
         $this->registerModuleVendorDependencies();
     }
