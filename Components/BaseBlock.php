@@ -5,13 +5,13 @@ namespace Modules\Core\Components;
 abstract class BaseBlock extends BaseComponent
 {
     /**
-     * Get the blocks data to send to the view
+     * Get the blocks data to send to the view.
      * @return array
      */
     abstract protected function data();
 
     /**
-     * Get the block view
+     * Get the block view.
      * @return string
      */
     private function view()
@@ -27,7 +27,7 @@ abstract class BaseBlock extends BaseComponent
     }
 
     /**
-     * Boot the component
+     * Boot the component.
      */
     public function boot()
     {
