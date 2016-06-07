@@ -5,12 +5,10 @@ namespace Modules\Core\Components;
 use Illuminate\Support\Str;
 
 /**
- * Class BaseComponent
- * @package Modules\Core\Components
+ * Class BaseComponent.
  */
 abstract class BaseComponent
 {
-
     /**
      * @var
      */
@@ -60,7 +58,7 @@ abstract class BaseComponent
     }
 
     /**
-     * Boot the component
+     * Boot the component.
      * @return mixed
      */
     abstract protected function boot();

@@ -6,8 +6,6 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Modules\Core\Components\BaseBlock;
-use Modules\Core\Components\BaseComponent;
-use Modules\Core\Components\ComponentFinder;
 use Pingpong\Modules\Module;
 
 class ComponentsServiceProvider extends ServiceProvider
@@ -37,11 +35,10 @@ class ComponentsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 
     /**
-     * Register the Blade directive for Blocks
+     * Register the Blade directive for Blocks.
      */
     protected function registerBlockBladeDirective()
     {
@@ -57,7 +54,7 @@ class ComponentsServiceProvider extends ServiceProvider
     }
 
     /**
-     * Boot components for all enabled modules
+     * Boot components for all enabled modules.
      */
     protected function bootModuleComponents()
     {
@@ -95,6 +92,6 @@ class ComponentsServiceProvider extends ServiceProvider
      */
     protected function moduleHasBlocks($module)
     {
-        return !empty($module->get('blocks'));
+        return ! empty($module->get('blocks'));
     }
 }
