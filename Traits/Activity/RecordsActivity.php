@@ -72,7 +72,7 @@ trait RecordsActivity
             return static::$activityPrivacy;
         }
 
-        return 'public';
+        return 'protected';
     }
 
     /**
