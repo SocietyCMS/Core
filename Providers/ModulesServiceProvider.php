@@ -30,7 +30,7 @@ class ModulesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerModuleResourceNamespaces();
+        $this->bootModules();
     }
 
     /**
@@ -42,13 +42,13 @@ class ModulesServiceProvider extends ServiceProvider
     {
         $this->app->bind(\Spatie\MediaLibrary\Media::class, \Modules\Core\Entities\Media::class);
 
-        $this->registerModuleVendorDependencies();
+        $this->registerModules();
     }
 
     /**
      * Register the modules aliases.
      */
-    private function registerModuleResourceNamespaces()
+    private function bootModules()
     {
         foreach ($this->app['modules']->enabled() as $module) {
             $this->registerViewNamespace($module);
@@ -60,7 +60,7 @@ class ModulesServiceProvider extends ServiceProvider
     /**
      * Register the modules dependencies.
      */
-    private function registerModuleVendorDependencies()
+    private function registerModules()
     {
         foreach ($this->app['modules']->enabled() as $module) {
             $this->registerVendorConfig($module);
