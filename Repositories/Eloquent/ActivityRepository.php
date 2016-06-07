@@ -57,7 +57,6 @@ class ActivityRepository extends EloquentBaseRepository
         return $this->parserResult($model);
     }
 
-
     /**
      * Take the latest records and group by date.
      *
