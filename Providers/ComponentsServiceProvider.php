@@ -43,7 +43,6 @@ class ComponentsServiceProvider extends ServiceProvider
     protected function registerBlockBladeDirective()
     {
         Blade::directive('block', function ($expression) {
-
             $expression = $this->sanitizeExpression($expression);
 
             list($module, $component) = explode('::', $expression);
@@ -104,7 +103,7 @@ class ComponentsServiceProvider extends ServiceProvider
     {
         if (Str::startsWith($expression, '(')) {
             $expression = substr($expression, 1, -1);
-            $expression = str_replace(['\'', '"'], "", $expression);
+            $expression = str_replace(['\'', '"'], '', $expression);
         }
 
         return $expression;
