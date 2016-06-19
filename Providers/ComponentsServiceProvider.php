@@ -94,6 +94,6 @@ class ComponentsServiceProvider extends ServiceProvider
      */
     protected function moduleHasBlocks($module)
     {
-        return !empty($module->get('blocks'));
+        return ! empty($module->get('blocks'));
     }
 }
