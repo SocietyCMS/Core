@@ -17,14 +17,14 @@ class ComponentsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerBlockBladeDirective();
+        $this->bootModuleComponents();
 
         /*
          * Delayed until app is fully booted, because we need the current theme to be registered.
          * Modules\Setting\Providers\ThemeServiceProvider::register()
          */
         $this->app->booted(function () {
-            $this->bootModuleComponents();
+            $this->registerBlockBladeDirective();
         });
     }
 
@@ -43,14 +43,13 @@ class ComponentsServiceProvider extends ServiceProvider
     protected function registerBlockBladeDirective()
     {
         Blade::directive('block', function ($expression) {
-            if (Str::startsWith($expression, '(')) {
-                $expression = substr($expression, 1, -1);
-            }
 
-            list($module, $component) = $segments = explode('::', $expression);
+            $expression = $this->sanitizeExpression($expression);
+
+            list($module, $component) = explode('::', $expression);
 
             if (view()->exists("$module::blocks.$component")) {
-                return "<?php echo \$__env->make($module::blocks.$component, array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>";
+                return "<?php echo \$__env->make('$module::blocks.$component', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>";
             }
         });
     }
@@ -95,5 +94,19 @@ class ComponentsServiceProvider extends ServiceProvider
     protected function moduleHasBlocks($module)
     {
         return ! empty($module->get('blocks'));
+    }
+
+    /**
+     * @param $expression
+     * @return mixed|string
+     */
+    protected function sanitizeExpression($expression)
+    {
+        if (Str::startsWith($expression, '(')) {
+            $expression = substr($expression, 1, -1);
+            $expression = str_replace(['\'', '"'], "", $expression);
+        }
+
+        return $expression;
     }
 }
