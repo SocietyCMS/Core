@@ -43,7 +43,7 @@ abstract class BaseComponent
      */
     public function getComponentName()
     {
-        return Str::lower($this->componentName);
+        return Str::camel($this->componentName);
     }
 
     /**

@@ -49,7 +49,9 @@ class ComponentsServiceProvider extends ServiceProvider
 
             list($module, $component) = $segments = explode('::', $expression);
 
-            return "<?php echo \$__env->make($module::blocks.$component, array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>";
+            if (view()->exists("$module::blocks.$component")) {
+                return "<?php echo \$__env->make($module::blocks.$component, array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>";
+            }
         });
     }
 
@@ -71,17 +73,17 @@ class ComponentsServiceProvider extends ServiceProvider
     protected function bootModuleBlocks(Module $module)
     {
         foreach ($module->get('blocks') as $block) {
-            $module = studly_case($module->getName());
+            $moduleName = studly_case($module->getName());
             $block = studly_case($block);
-            $class = "Modules\\{$module}\\Components\\{$block}Block";
+            $class = "Modules\\{$moduleName}\\Components\\{$block}Block";
 
             if (class_exists($class)) {
                 /* @var BaseBlock $moduleBlock */
                 $moduleBlock = app()->make($class)
-                        ->setModuleName($module)
-                        ->setComponentName($block);
+                    ->setModuleName($moduleName)
+                    ->setComponentName($block);
 
-                $moduleBlock->boot($module, $block);
+                $moduleBlock->boot($moduleName, $block);
             }
         }
     }
@@ -92,6 +94,6 @@ class ComponentsServiceProvider extends ServiceProvider
      */
     protected function moduleHasBlocks($module)
     {
-        return ! empty($module->get('blocks'));
+        return !empty($module->get('blocks'));
     }
 }
