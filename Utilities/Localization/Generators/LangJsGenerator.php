@@ -44,7 +44,7 @@ class LangJsGenerator
         $messages = $this->getMessages();
         $this->prepareTarget($target);
         $template = $this->file->get(__DIR__.'/Templates/langjs_with_messages.js');
-        $langjs = $this->file->get(__DIR__.'/../Lang.js/src/lang.js');
+        $langjs = $this->file->get(__DIR__.'/../Lang.js/dist/lang.min.js');
         $template = str_replace('\'{ messages }\'', json_encode($messages), $template);
         $template = str_replace('\'{ langjs }\';', $langjs, $template);
         if ($options['compress']) {
