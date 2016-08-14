@@ -120,7 +120,7 @@ class ConfigureDatabase implements SetupScript
      */
     protected function askDatabasePassword()
     {
-        $databasePassword = $this->command->ask('Enter your database password (leave <none> for no password)', 'secret');
+        $databasePassword = $this->command->ask('Enter your database password (type "<none>" for no password)', 'secret');
 
         return ($databasePassword === '<none>') ? '' : $databasePassword;
     }
