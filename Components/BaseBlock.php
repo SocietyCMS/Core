@@ -31,10 +31,8 @@ abstract class BaseBlock extends BaseComponent
      */
     public function boot()
     {
-        if (view()->exists($this->view())) {
-            view()->composer($this->view(), function ($view) {
-                $view->with('data', $this->data());
-            });
-        }
+        view()->composer($this->view(), function ($view) {
+            $view->with('data', $this->data());
+        });
     }
 }
